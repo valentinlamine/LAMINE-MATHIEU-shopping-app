@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+.color-picker-ctn {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue { background-color: #00f; }
+.red { background-color: #f00; }
+.grey { background-color: #ccc; }
+.white { background-color: #fff; }
+.black { background-color: #000; }
+
+.selected {
+    border: 3px solid green;
+}
+
+.sneaker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sneaker-img {
+    height: 300px;
+}
