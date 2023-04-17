@@ -1,0 +1,236 @@
+{
+    "iphone": [
+        {
+            "id": "1",
+            "name": "iPhone SE",
+            "price": ["559", "629", "759"],
+            "release_date": "2022-03-18",
+            "colors": ["black", "white", "red"],
+            "images": {
+                "red": ["img/1/1_red.jpg", "img/1/2_red.jpg", "img/1/3_red.jpg"],
+                "black": ["img/1/1_black.jpg", "img/1/2_black.jpg", "img/1/3_black.jpg"],
+                "white": ["img/1/1_white.jpg", "img/1/2_white.jpg", "img/1/3_white.jpg"]
+            },
+            "currency": "USD",
+            "storage": ["64GB", "128GB", "256GB"],
+            "reduction": "0",
+            "description": "iPhone SE is the most powerful 4.7-inch iPhone ever. It features the A13 Bionic, the fastest chip in a smartphone, for incredible performance in apps, games, and photography. Portrait mode for studio-quality portraits and six lighting effects. Next-generation Smart HDR for incredible detail across highlights and shadows. And all the advanced features of iOS. It looks small. It acts big. iPhone SE. The powerful new iPhone SE.",
+            "size": "4.7"
+        },
+        {
+            "id": "2",
+            "name": "iPhone 12",
+            "price": ["809", "859", "979"],
+            "release_date": "2020-10-23",
+            "colors": ["black", "white", "red", "green", "purple", "blue"],
+            "images": {
+                "red": ["img/2/1_red.jpg", "img/2/2_red.jpg", "img/2/3_red.jpg"],
+                "black": ["img/2/1_black.jpg", "img/2/2_black.jpg", "img/2/3_black.jpg"],
+                "white": ["img/2/1_white.jpg", "img/2/2_white.jpg", "img/2/3_white.jpg"],
+                "green": ["img/2/1_green.jpg", "img/2/2_green.jpg", "img/2/3_green.jpg"],
+                "purple": ["img/2/1_purple.jpg", "img/2/2_purple.jpg", "img/2/3_purple.jpg"],
+                "blue": ["img/2/1_blue.jpg", "img/2/2_blue.jpg", "img/2/3_blue.jpg"]
+            },
+            "currency": "USD",
+            "storage": ["64GB", "128GB", "256GB"],
+            "reduction": "0",
+            "description": "iPhone 12 is a new generation of iPhone. Featuring the Ceramic Shield front cover, the toughest glass in a smartphone. A14 Bionic, the fastest chip in a smartphone. An edge-to-edge OLED display. Ceramic Shield front cover. The toughest glass in a smartphone.",
+            "size": "6.1"
+        }, 
+        {
+            "id": 3,
+            "name": "iPhone 13",
+            "price": ["909", "1029", "1259"],
+            "release_date": "2021-09-24",
+            "colors": ["black", "white", "red", "green", "pink", "blue"],
+            "images": {
+                "red": ["img/3/1_red.jpg", "img/3/2_red.jpg", "img/3/3_red.jpg"],
+                "black": ["img/3/1_black.jpg", "img/3/2_black.jpg", "img/3/3_black.jpg"],
+                "white": ["img/3/1_white.jpg", "img/3/2_white.jpg", "img/3/3_white.jpg"],
+                "green": ["img/3/1_green.jpg", "img/3/2_green.jpg", "img/3/3_green.jpg"],
+                "pink": ["img/3/1_pink.jpg", "img/3/2_pink.jpg", "img/3/3_pink.jpg"],
+                "blue": ["img/3/1_blue.jpg", "img/3/2_blue.jpg", "img/3/3_blue.jpg"]
+            },
+            "currency": "USD",
+            "storage": ["128GB", "256GB", "512GB"],
+            "reduction": "0",
+            "description": "iPhone 13 is a new generation of iPhone. Featuring the Ceramic Shield front cover, the toughest glass in a smartphone. A15 Bionic, the fastest chip in a smartphone. An edge-to-edge OLED display. Ceramic Shield front cover. The toughest glass in a smartphone.",
+            "size": "6.1"
+        },
+        {
+            "id": 4,
+            "name": "iPhone 14",
+            "price": ["1019", "1149", "1409"],
+            "release_date": "2022-10-17",
+            "colors": ["black", "white", "red", "yellow", "pink", "blue"],
+            "images": {
+                "red": ["img/4/1_red.jpg", "img/4/2_red.jpg", "img/4/3_red.jpg"],
+                "black": ["img/4/1_black.jpg", "img/4/2_black.jpg", "img/4/3_black.jpg"],
+                "white": ["img/4/1_white.jpg", "img/4/2_white.jpg", "img/4/3_white.jpg"],
+                "yellow": ["img/4/1_yellow.jpg", "img/4/2_yellow.jpg", "img/4/3_yellow.jpg"],
+                "pink": ["img/4/1_pink.jpg", "img/4/2_pink.jpg", "img/4/3_pink.jpg"],
+                "blue": ["img/4/1_blue.jpg", "img/4/2_blue.jpg", "img/4/3_blue.jpg"]
+            },
+            "currency": "USD",
+            "storage": ["128GB", "256GB", "512GB"],
+            "reduction": "0",
+            "description": "Meet iPhone 14, the ultimate premium smartphone that redefines the user experience. iPhone 14 is the ultimate smartphone with an ultra-smooth OLED display, ultra-powerful processor, long battery life and a 12-megapixel triple-lens rear camera. With advanced security features like facial recognition and end-to-end encryption technology, iPhone 14 delivers an unparalleled user experience.",
+            "size": "6.1"
+        },
+        {
+            "id": 5,
+            "name": "iPhone 14 Pro Max",
+            "price": ["1479", "1609", "1869", "2129"],
+            "release_date": "2022-10-17",
+            "colors": ["black", "white", "yellow", "purple"],
+            "images": {
+                "yellow": ["img/5/1_yellow.jpg", "img/5/2_yellow.jpg", "img/5/3_yellow.jpg"],
+                "black": ["img/5/1_black.jpg", "img/5/2_black.jpg", "img/5/3_black.jpg"],
+                "white": ["img/5/1_white.jpg", "img/5/2_white.jpg", "img/5/3_white.jpg"],
+                "purple": ["img/5/1_purple.jpg", "img/5/2_purple.jpg", "img/5/3_purple.jpg"]
+            },
+            "currency": "USD",
+            "storage": ["128GB", "256GB", "512GB", "1TB"],
+            "reduction": "0",
+            "description": "The iPhone 14 Pro is the ultimate smartphone for demanding users, with an ultra-smooth ProMotion OLED display, ultra-powerful processor and 12-megapixel Pro triple-lens rear camera. Packed with advanced security features and water and dust resistance, iPhone 14 Pro delivers an exceptional user experience with a sleek stainless steel and glass design.",
+            "size": "6.7"
+        }
+    ],
+    "ipad": [
+        {
+            "id":"6",
+            "name":"iPad Pro",
+            "price":["1069","1199","1449","1949","2249"],
+            "release_date":"2020-03-20",
+            "colors":["grey","silver"],
+            "images":{
+                "grey":["",""],
+                "silver":["",""]
+            },
+            "currency":"USD",
+            "storage": ["128GB","256GB","512GB","1TB","2TB"],
+            "reduction":"0",
+            "description":"The iPad Pro is a high-end tablet. It features a large, high-resolution touchscreen, powerful processors, and a range of accessories that make it suitable for professional use. The latest models come in two sizes: 11-inch and 12.9-inch. They both offer a Liquid Retina XDR display, 5G connectivity, and up to 2TB of storage. The iPad Pro runs on Apple's own M1 chip, which provides desktop-level performance and efficient battery life. It is also compatible with the Apple Pencil and Magic Keyboard, making it a versatile device for creative work and productivity. Other features include Face ID, 12MP wide and 10MP ultra-wide cameras, and support for Apple's latest software updates.",            
+            "size":"11,12.9"
+        },
+        {
+            "id":"7",
+            "name":"iPad Air",
+            "price":["789","989"],
+            "release_date":"2020-10-20",
+            "colors":["grey","blue","pink","purple","white"],
+            "images":{
+                "grey":["",""],
+                "blue":["",""],
+                "pink":["",""],
+                "purple":["",""],
+                "white":["",""]
+            },
+            "currency":"USD",
+            "storage": ["64GB","256GB"],
+            "reduction":"0",
+            "description":"The iPad Air is a powerful and portable tablet from Apple, featuring a large high-resolution touchscreen, A14 Bionic chip, and support for Apple Pencil 2nd generation. It also offers Touch ID, 12MP rear and 7MP front cameras, and compatibility with a range of accessories such as the Magic Keyboard.",            
+            "size":"10.86"
+
+        },
+        {
+            "id":"8",
+            "name":"iPad",
+            "price":["589","789"],
+            "release_date":"2020-10-26",
+            "colors":["blue","pink","yellow","silver"],
+            "images":{
+                "blue":["",""],
+                "pink":["",""],
+                "yellow":["",""],
+                "silver":["",""]
+            },
+            "currency":"USD",
+            "storage": ["64GB","256GB"],
+            "reduction":"0",
+            "description":"The iPad is a popular tablet from Apple, featuring a 10.2-inch high-resolution touchscreen, A-series chip for smooth performance, and support for the 1st generation Apple Pencil. It also has Touch ID, an 8MP rear and 1.2MP front camera, and compatibility with the Smart Keyboard, making it suitable for entertainment and basic productivity tasks. The iPad runs on the latest iOS software and offers access to the App Store for downloading a range of apps.",            
+            "size":"10.9"
+        },
+        {
+            "id":"9",
+            "name":"iPad mini",
+            "price":["659","859"],
+            "release_date":"2012-11-02",
+            "colors":["grey","pink","purple","white"],
+            "images":{
+                "grey":["",""],
+                "pink":["",""],
+                "purple":["",""],
+                "white":["",""]
+            },
+            "currency":"USD",
+            "storage": ["64GB","256GB"],
+            "reduction":"0",
+            "description":"The iPad mini is a compact and lightweight tablet from Apple, featuring a 7.9-inch high-resolution touchscreen and Apple's A15 Bionic chip for fast and smooth performance. It supports the 2nd generation Apple Pencil, Touch ID, and has an 8MP rear and 12MP front camera. It also offers compatibility with the Smart Keyboard Folio, making it a versatile device for productivity and entertainment on-the-go.",            
+            "size":"8.3"
+        }
+    ],
+    "Mac" : [
+        {
+            "id": "10",
+            "name": "MacBoock Air",
+            "price":["1499","1849"],
+            "release_date":"2022-07-15",
+            "colors":["black","white","grey","silver"],
+            "images":{
+                "black":["",""],
+                "white":["",""],
+                "grey":["",""],
+                "silver":["",""]
+            },
+            "currency":"USD",
+            "storage":["256GB","512GB"],
+            "reduction":"0",
+            "description":"The MacBook Air M2 is a lightweight and powerful laptop from Apple, featuring the M2 chip, a 13.3-inch Retina display, up to 16GB of RAM, and up to 2TB of storage. It also offers a backlit Magic Keyboard, Touch ID, and up to 12-hour battery life.",    
+            "size":"13.6"
+        },
+        {
+            "id":"11",
+            "name":"MacBoock Pro",
+            "price":["4149","4609","5299","6679"],
+            "release_date":"2023-01-24",
+            "colors":["grey","silver"],
+            "images":{
+                "grey":["",""],
+                "silver":["",""]
+            }, 
+            "currency":"USD",
+            "storage":["1To","2To","4To","8To"],
+            "reduction":"0",
+            "description":"The MacBook Pro is a high-performance laptop from Apple, available in 13-inch and 16-inch models, featuring the M1 Pro or M1 Max chip, a high-resolution Retina display, up to 32GB of RAM, and up to 8TB of storage. It also offers a Touch Bar, Touch ID, up to 11 hours of battery life, and optimized features for professional use.",
+            "size":"16"
+
+        },
+        {
+            "id":"12",
+            "name":"iMac",
+            "price":["2009","2239","2699"],
+            "release_date":"2023-02-10",
+            "colors":["blue","green","pink","silver","yellow","orange","purple"],
+            "images":{
+                "blue":["",""],
+                "green":["",""],
+                "pink":["",""],
+                "silver":["",""],
+                "yellow":["",""],
+                "orange":["",""],
+                "purple":["",""]
+            },
+            "currency":"USD",
+            "storage":["512GO","1To","2To"],
+            "reduction":"0",
+            "description":"The iMac is a line of all-in-one desktop computers designed and sold by Apple Inc. It features a high-resolution display, powerful processor, and advanced graphics capabilities, all contained within the same unit as the computer's other hardware components. The iMac is known for its sleek design and user-friendly interface, and is popular among professionals and consumers alike for its performance and ease of use.",
+            "size":"24"
+
+        }
+
+
+
+
+    ]
+}
