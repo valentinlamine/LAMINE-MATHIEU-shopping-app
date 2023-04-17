@@ -1,0 +1,18 @@
+{
+  "name": "howtoselljsononline",
+  "version": "1.0.0",
+  "description": "test de build une API",
+  "main": "app.js",
+  "scripts": {
+    "start": "supervisor app.js"
+  },
+  "author": "VALENTIN LAMINE",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
+}
