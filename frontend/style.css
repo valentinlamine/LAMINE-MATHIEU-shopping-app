@@ -3,8 +3,7 @@
 }
 
 body {
-    background-color: #1E1E1E;
-    color: #fff;
+    overflow-x: hidden;
 }
 
 .color-picker-ctn {
@@ -37,9 +36,55 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    width: 334px;
+}
+
+.sneakers-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    gap: 20px;
 }
 
 .sneaker-img {
-    height: 300px;
+    height: 200px;
+}
+
+.cart-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.cart-ctn {
+    background: #F5F5F5;
+    position: absolute;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    max-width: 100vw;
+    z-index: 9;
+    height: 100vh;
+    padding-top: 80px;
+    transition: all 0.5s ease;
+}
+
+.open-cart {
+    right: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.cart-sneaker-img {
+    width: 100px;
 }

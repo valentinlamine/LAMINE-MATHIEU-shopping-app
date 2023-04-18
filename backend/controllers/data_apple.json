@@ -102,16 +102,16 @@
             "name":"iPad Pro",
             "price":["1069","1199","1449","1949","2249"],
             "release_date":"2020-03-20",
-            "colors":["grey","silver"],
+            "colors":["grey","white"],
             "images":{
-                "grey":["",""],
-                "silver":["",""]
+                "grey":["img/6/1_grey.jpg", "img/6/2_grey.jpg", "img/6/3_grey.jpg"],
+                "white":["img/6/1_white.jpg", "img/6/2_white.jpg", "img/6/3_white.jpg"]
             },
             "currency":"USD",
             "storage": ["128GB","256GB","512GB","1TB","2TB"],
             "reduction":"0",
             "description":"The iPad Pro is a high-end tablet. It features a large, high-resolution touchscreen, powerful processors, and a range of accessories that make it suitable for professional use. The latest models come in two sizes: 11-inch and 12.9-inch. They both offer a Liquid Retina XDR display, 5G connectivity, and up to 2TB of storage. The iPad Pro runs on Apple's own M1 chip, which provides desktop-level performance and efficient battery life. It is also compatible with the Apple Pencil and Magic Keyboard, making it a versatile device for creative work and productivity. Other features include Face ID, 12MP wide and 10MP ultra-wide cameras, and support for Apple's latest software updates.",            
-            "size":"11,12.9"
+            "size":"11"
         },
         {
             "id":"7",
@@ -120,11 +120,11 @@
             "release_date":"2020-10-20",
             "colors":["grey","blue","pink","purple","white"],
             "images":{
-                "grey":["",""],
-                "blue":["",""],
-                "pink":["",""],
-                "purple":["",""],
-                "white":["",""]
+                "grey":["img/7/1_grey.jpg", "img/7/2_grey.jpg", "img/7/3_grey.jpg"],
+                "blue":["img/7/1_blue.jpg", "img/7/2_blue.jpg", "img/7/3_blue.jpg"],
+                "pink":["img/7/1_pink.jpg", "img/7/2_pink.jpg", "img/7/3_pink.jpg"],
+                "purple":["img/7/1_purple.jpg", "img/7/2_purple.jpg", "img/7/3_purple.jpg"],
+                "white":["img/7/1_white.jpg", "img/7/2_white.jpg", "img/7/3_white.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -227,10 +227,51 @@
             "description":"The iMac is a line of all-in-one desktop computers designed and sold by Apple Inc. It features a high-resolution display, powerful processor, and advanced graphics capabilities, all contained within the same unit as the computer's other hardware components. The iMac is known for its sleek design and user-friendly interface, and is popular among professionals and consumers alike for its performance and ease of use.",
             "size":"24"
 
-        }
-
-
-
-
+        },
+        {
+            "id":"13",
+            "name":"Mac Mini",
+            "price":["1 549","1 779","2 239","2 929","4 309"],
+            "release_date":"2020-11-17",
+            "colors":["grey"],
+            "images":{
+                "grey":["",""]
+            },
+            "currency":"USD",
+            "storage":["512GO","1To","2To","4To","8To"],
+            "reduction":"0",
+            "description":"The Mac mini is a small but powerful desktop computer made by Apple, designed for versatility and ease of use. It runs on macOS and can be customized with a range of external peripherals.",
+            "size":"0"
+        },
+        {
+            "id":"14",
+            "name":"Mac Studio",
+            "price":["4 599","5 059","5 749","7 129"],
+            "release_date":"2022-03-18",
+            "colors":["grey"],
+            "images":{
+                "grey":["",""]
+            },
+            "currency":"USD",
+            "storage":["1To","2To","4To","8To"],
+            "reduction":"0",
+            "description":"The Mac Studio is a powerful desktop computer made by Apple, designed specifically for post-production professionals who require high-performance computing capabilities. With its state-of-the-art hardware, including powerful processors and advanced graphics cards, the Mac Studio is capable of handling even the most demanding tasks, such as 3D rendering, video editing, and audio production.",
+            "size":"0"
+        },
+        {
+            "id":"15",
+            "name":"Mac Pro",
+            "price":["6499","6729","7 189","7 879","9 259"],
+            "release_date":"2006-07-06",
+            "colors":"grey",
+            "images":{
+                "grey":["",""]
+            },
+            "currency":"USD",
+            "storage":["512GO","1To","2To","4To","8To"],
+            "reduction":"0",
+            "description":"The Mac Pro is a powerful and versatile desktop computer made by Apple, designed for professionals who require high-performance computing capabilities.",
+            "size":"0"
+        } 
     ]
 }

@@ -18,6 +18,7 @@ function GetSneakers() {
             filteredSneakers = sneakers;
             console.log(data.sneakers);
             DisplaySneakers();
+            loadCart();
         }
         )
         .catch(error => {
@@ -35,6 +36,7 @@ function DisplaySneakers() {
             <img class="sneaker-img" src="${sneaker.img_1}">
             <div class="sneaker-name">${sneaker.name}</div>
             <div class="sneaker-price">${sneaker.price} €</div>
+            <button onclick="addSneaker(${sneaker.id})">Ajour au panier</button>
         `;
         container.appendChild(sneakerCtn);
     });
@@ -83,3 +85,50 @@ function sortByPrice() {
 }
 
 GetSneakers();
+
+const cartIcon = document.querySelector(".cart-icon");
+const cartCtn = document.querySelector(".cart-ctn");
+
+function toogleCart() {
+    cartCtn.classList.toggle("open-cart");
+    if (cartCtn.classList.contains("open-cart")) {
+        cartIcon.src = "close.png";
+    } else {
+        cartIcon.src = "cart.png";
+    }
+}
+
+cartIcon.addEventListener("click", toogleCart);
+
+//Local Storage
+let cartList = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addSneaker(id) {
+    let sneaker = sneakers.find(sneaker => sneaker.id === id);
+    cartList.push(sneaker);
+    localStorage.setItem("cart", JSON.stringify(cartList));
+    console.log(cartList);
+    loadCart();
+}
+
+function loadCart() {
+    cartCtn.innerHTML = "";
+    cartList.forEach(sneaker => {
+        sneakercart = document.createElement("div");
+        sneakercart.classList.add("cart-item");
+        sneakercart.innerHTML = `
+            <img class="cart-sneaker-img" src="${sneaker.img_1}" alt="sneaker"/>
+            <div>${sneaker.name}</div>
+            <div>${sneaker.price} €</div>
+            <button onclick="removeFromCart(${sneaker.id})">Supprimer</button>
+        `;
+        cartCtn.appendChild(sneakercart);
+    });
+}
+
+function removeFromCart(id) {
+    let indexToRemove = cartList.findIndex(sneaker => sneaker.id === id);
+    cartList.splice(indexToRemove, 1);
+    localStorage.setItem("cart", JSON.stringify(cartList));
+    loadCart();
+}
