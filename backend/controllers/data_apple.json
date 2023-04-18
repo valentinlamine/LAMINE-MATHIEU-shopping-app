@@ -138,12 +138,12 @@
             "name":"iPad",
             "price":["589","789"],
             "release_date":"2020-10-26",
-            "colors":["blue","pink","yellow","silver"],
+            "colors":["blue","pink","yellow","grey"],
             "images":{
-                "blue":["",""],
-                "pink":["",""],
-                "yellow":["",""],
-                "silver":["",""]
+                "blue":["img/8/1_blue.jpg", "img/8/2_blue.jpg", "img/8/3_blue.jpg"],
+                "pink":["img/8/1_pink.jpg", "img/8/2_pink.jpg", "img/8/3_pink.jpg"],
+                "yellow":["img/8/1_yellow.jpg", "img/8/2_yellow.jpg", "img/8/3_yellow.jpg"],
+                "grey":["img/8/1_grey.jpg", "img/8/2_grey.jpg", "img/8/3_grey.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -158,10 +158,10 @@
             "release_date":"2012-11-02",
             "colors":["grey","pink","purple","white"],
             "images":{
-                "grey":["",""],
-                "pink":["",""],
-                "purple":["",""],
-                "white":["",""]
+                "grey":["img/9/1_grey.jpg", "img/9/2_grey.jpg", "img/9/3_grey.jpg"],
+                "pink":["img/9/1_pink.jpg", "img/9/2_pink.jpg", "img/9/3_pink.jpg"],
+                "purple":["img/9/1_purple.jpg", "img/9/2_purple.jpg", "img/9/3_purple.jpg"],
+                "white":["img/9/1_white.jpg", "img/9/2_white.jpg", "img/9/3_white.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -176,12 +176,11 @@
             "name": "MacBoock Air",
             "price":["1499","1849"],
             "release_date":"2022-07-15",
-            "colors":["black","white","grey","silver"],
+            "colors":["black","white","grey"],
             "images":{
-                "black":["",""],
-                "white":["",""],
-                "grey":["",""],
-                "silver":["",""]
+                "black":["img/10/1_black.jpg"],
+                "white":["img/10/1_white.jpg"],
+                "grey":["img/10/1_grey.jpg"]
             },
             "currency":"USD",
             "storage":["256GB","512GB"],
@@ -194,10 +193,9 @@
             "name":"MacBoock Pro",
             "price":["4149","4609","5299","6679"],
             "release_date":"2023-01-24",
-            "colors":["grey","silver"],
+            "colors":["grey"],
             "images":{
-                "grey":["",""],
-                "silver":["",""]
+                "grey":["img/11/1_grey.jpg"]    
             }, 
             "currency":"USD",
             "storage":["1To","2To","4To","8To"],
@@ -211,15 +209,15 @@
             "name":"iMac",
             "price":["2009","2239","2699"],
             "release_date":"2023-02-10",
-            "colors":["blue","green","pink","silver","yellow","orange","purple"],
+            "colors":["blue","green","pink","grey","yellow","orange","purple"],
             "images":{
-                "blue":["",""],
-                "green":["",""],
-                "pink":["",""],
-                "silver":["",""],
-                "yellow":["",""],
-                "orange":["",""],
-                "purple":["",""]
+                "blue":["img/12/1_blue.jpg"],
+                "green":["img/12/1_green.jpg"],
+                "pink":["img/12/1_pink.jpg"],
+                "grey":["img/12/1_grey.jpg"],
+                "yellow":["img/12/1_yellow.jpg"],
+                "orange":["img/12/1_orange.jpg"],
+                "purple":["img/12/1_purple.jpg"]
             },
             "currency":"USD",
             "storage":["512GO","1To","2To"],
@@ -235,7 +233,7 @@
             "release_date":"2020-11-17",
             "colors":["grey"],
             "images":{
-                "grey":["",""]
+                "grey":["13/1_grey.jpg"]
             },
             "currency":"USD",
             "storage":["512GO","1To","2To","4To","8To"],
@@ -250,7 +248,7 @@
             "release_date":"2022-03-18",
             "colors":["grey"],
             "images":{
-                "grey":["",""]
+                "grey":["img/14/1_grey.jpg"]
             },
             "currency":"USD",
             "storage":["1To","2To","4To","8To"],
@@ -265,7 +263,7 @@
             "release_date":"2006-07-06",
             "colors":"grey",
             "images":{
-                "grey":["",""]
+                "grey":["img/15/1_grey.jpg"]
             },
             "currency":"USD",
             "storage":["512GO","1To","2To","4To","8To"],
