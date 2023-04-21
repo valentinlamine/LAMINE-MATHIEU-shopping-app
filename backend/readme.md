@@ -1,22 +1,22 @@
 # Documentation API-HTSO
 
-## Fonctionnemment
+## Fonctionnement
 
-L'API HowToSellOnline réalisé par [Valentin LAMINE](github.com/valentinlamine) permet de récupérer les données des iPhones, iPads et iMacs nécessaires à la boutique du côté front-end de ce projet.
+L'API HowToSellOnline réalisé par [Valentin LAMINE](github.com/valentinlamine) permet de récupérer les données des iPhones, iPads et iMacs nécessaires à la boutique du côté frontend de ce projet.
 
 Cette API est une **REST API**, Elle repose sur un serveur express basé sur NodeJS.
 
-À l'heure actuelle elle ne possède aucune authentification particulière, elle est cependant dotée d'un limiteur de reqûete configuré pour que l'on puisse envoyer au maximum 30 requêtes par minutes.
+À l'heure actuelle elle ne possède aucune authentification particulière, elle est cependant dotée d'un limiteur de requête configuré pour que l'on puisse envoyer au maximum 30 requêtes par minutes.
 
 ## Utilisation de l'API
 
-Pour utiliser l'API, il faut donc utiliser un lien web, actuellement configuré en localhost sur le port 3000, il faudra pour utiliser l'API se servir du lien suivant : 
+Pour utiliser l'API, il faut donc utiliser un lien web, actuellement configuré en localhost sur le port 3000, il faudra pour utiliser l'API se servir du lien suivant :
 
 ```
 http://localhost:3000/
 ```
 
-Puis à la suite de cette base d'url on utilise la fonctionnalité que l'on souhaite 
+Puis à la suite de cette base d'url on utilise la fonctionnalité que l'on souhaite
 
 ## Fonctionnalités
 
@@ -32,7 +32,7 @@ Fonctionnalité principale de l'API qui permet de récupérer la liste de tous l
 http://localhost:3000/items
 ```
 
-#### Exemple 
+#### Exemple
 
 ```json
 {
@@ -42,25 +42,25 @@ http://localhost:3000/items
             "id": "1",
             "name": "iPhone SE",
             "price": [
-                ...
+                "..."
             ],
             "release_date": "2022-03-18",
             "colors": [
-                ...
+                "..."
             ],
             "images": {
-                ...
+                "..."
             },
             "currency": "USD",
             "storage": [
-                ...
+                "..."
             ],
             "reduction": "0",
             "description": "...",
             "size": "4.7"
         },
 	{
-	...
+	"..."
 	}
 	]
 }
@@ -131,7 +131,7 @@ http://localhost:3000/item/1
 
 #### Définition
 
-Renvoie la liste de tous les iphones présent dans la base de données
+Renvoie la liste de tous les iPhones présents dans la base de données
 
 #### Appel
 
@@ -160,7 +160,7 @@ http://localhost:3000/iphone
                 "red"
             ],
             "images": {
-                ...
+                "..."
             },
             "currency": "USD",
             "storage": [
@@ -173,7 +173,7 @@ http://localhost:3000/iphone
             "size": "4.7"
         },
 	{
-	...
+	"..."
 	}
 	]
 }
@@ -183,7 +183,7 @@ http://localhost:3000/iphone
 
 #### Définition
 
-Renvoie la liste de tous les ipads présent dans la base de données
+Renvoie la liste de tous les iPads présents dans la base de données
 
 #### Appel
 
@@ -237,7 +237,7 @@ http://localhost:3000/ipad
             "size": "11"
         },
 	{
-	...
+	"..."
 	}
 	]
 }
@@ -247,7 +247,7 @@ http://localhost:3000/ipad
 
 #### Définition
 
-Renvoie la liste de tous les macs présent dans la base de données
+Renvoie la liste de tous les macs présents dans la base de données
 
 #### Appel
 
@@ -255,7 +255,7 @@ Renvoie la liste de tous les macs présent dans la base de données
 http://localhost:3000/mac
 ```
 
-#### Exemple 
+#### Exemple
 
 ```json
 {
@@ -295,7 +295,7 @@ http://localhost:3000/mac
             "size": "13.6"
         },
 	{
-	...
+	"..."
 	}
 	]
 }
