@@ -10,9 +10,9 @@ app.use(cors({
     origin: "*"
 }));
 
-const sneakerRoutes = require('./routes/sneakers');
+const ItemsRoutes = require('./routes/main');
 
-app.use(sneakerRoutes);
+app.use(ItemsRoutes);
 
 
 app.listen(port, "",  () => {
