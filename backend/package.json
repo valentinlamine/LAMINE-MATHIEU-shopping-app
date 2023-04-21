@@ -1,7 +1,7 @@
 {
-  "name": "howtoselljsononline",
+  "name": "howtosellonline",
   "version": "1.0.0",
-  "description": "test de build une API",
+  "description": "API of Apple Product info for the How to Sell Online course",
   "main": "app.js",
   "scripts": {
     "start": "supervisor app.js"

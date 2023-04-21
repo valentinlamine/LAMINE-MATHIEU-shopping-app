@@ -1,13 +1,16 @@
+//List of required packages
 const express = require('express');
-const rateLimit = require("express-rate-limit");
+const rateLimit = require("express-rate-limit"); 
 const ItemsRoutes = require('./routes/main');
 
+//Create express app
 const app = express();
 const port = 3000;
 const ip_add = "localhost"
 
-const cors = require('cors');
-const Limiter = rateLimit({
+//Set up express app
+const cors = require('cors'); 
+const Limiter = rateLimit({ // rate limiter middleware
     windowMs: 60 * 1000, // 1 minute
     max: 30, // limit each IP to 30 requests per windowMs
     message: 'Too many requests from this IP, please try again after an minute',
@@ -15,10 +18,11 @@ const Limiter = rateLimit({
     legacyHeaders: false,
 });
 
-app.use(Limiter);
-app.use(cors({origin: "*"}));
-app.use(ItemsRoutes);
+app.use(Limiter); //  apply to all requests
+app.use(cors({origin: "*"})); // allow cross-origin requests
+app.use(ItemsRoutes); // use the routes
 
-app.listen(port, "",  () => {
-    console.log(`Example app listening at http://${ip_add}:${port}`)
+//Start the server
+app.listen(port, "",  () => { 
+    console.log(`Example app listening at http://${ip_add}:${port}`) // log the port
 });
