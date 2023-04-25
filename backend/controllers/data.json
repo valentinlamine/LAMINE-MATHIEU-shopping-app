@@ -138,7 +138,7 @@
             "name":"iPad",
             "price":["589","789"],
             "release_date":"2020-10-26",
-            "colors":["blue","pink","yellow","grey"],
+            "colors":["grey","pink","yellow","blue"],
             "images":{
                 "blue":["img/8/1_blue.jpg", "img/8/2_blue.jpg", "img/8/3_blue.jpg"],
                 "pink":["img/8/1_pink.jpg", "img/8/2_pink.jpg", "img/8/3_pink.jpg"],
@@ -176,7 +176,7 @@
             "name": "MacBoock Air",
             "price":["1499","1849"],
             "release_date":"2022-07-15",
-            "colors":["black","white","grey"],
+            "colors":["grey", "black","white"],
             "images":{
                 "black":["img/10/1_black.jpg"],
                 "white":["img/10/1_white.jpg"],
@@ -209,7 +209,7 @@
             "name":"iMac",
             "price":["2009","2239","2699"],
             "release_date":"2023-02-10",
-            "colors":["blue","green","pink","grey","yellow","orange","purple"],
+            "colors":["grey","blue","green","pink","yellow","orange","purple"],
             "images":{
                 "blue":["img/12/1_blue.jpg", "img/12/2_blue.jpg"],
                 "green":["img/12/1_green.jpg", "img/12/2_green.jpg"],

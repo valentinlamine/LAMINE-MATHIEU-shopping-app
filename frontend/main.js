@@ -1,8 +1,8 @@
 const port = 3000;
-const ip_add = "25.11.144.33"
+const ip_add = "localhost"
 const url = "http://" + ip_add + ":" + port;
 
-const card_container = document.querySelector(".sneakers-ctn");
+const card_container = document.querySelector(".items-ctn");
 const sort_pickers = document.querySelectorAll(".picker");
 
 var items;
@@ -39,7 +39,11 @@ function DisplayItemsCards() {
         itemCtn.innerHTML = `
             <div class="images-ctn">`;
             for (let i = 0; i < item.images[color].length; i++) {
-                    itemCtn.innerHTML += `<img class="sneaker-img" src="${item.images[color][i]}" alt="${item.name}">`;
+                    if (i === 0) {
+                        itemCtn.innerHTML += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
+                    } else {
+                        itemCtn.innerHTML += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;
+                    }
                 }
             itemCtn.innerHTML += `</div>
             <div class="item-name">${item.name}</div>
