@@ -62,13 +62,13 @@
             "name": "iPhone 14",
             "price": ["1019", "1149", "1409"],
             "release_date": "2022-10-17",
-            "colors": ["black", "white", "red", "yellow", "pink", "blue"],
+            "colors": ["black", "white", "red", "yellow", "purple", "blue"],
             "images": {
                 "red": ["img/4/1_red.jpg", "img/4/2_red.jpg", "img/4/3_red.jpg"],
                 "black": ["img/4/1_black.jpg", "img/4/2_black.jpg", "img/4/3_black.jpg"],
                 "white": ["img/4/1_white.jpg", "img/4/2_white.jpg", "img/4/3_white.jpg"],
                 "yellow": ["img/4/1_yellow.jpg", "img/4/2_yellow.jpg", "img/4/3_yellow.jpg"],
-                "pink": ["img/4/1_pink.jpg", "img/4/2_pink.jpg", "img/4/3_pink.jpg"],
+                "purple": ["img/4/1_purple.jpg", "img/4/2_purple.jpg", "img/4/3_purple.jpg"],
                 "blue": ["img/4/1_blue.jpg", "img/4/2_blue.jpg", "img/4/3_blue.jpg"]
             },
             "currency": "USD",
@@ -211,13 +211,13 @@
             "release_date":"2023-02-10",
             "colors":["blue","green","pink","grey","yellow","orange","purple"],
             "images":{
-                "blue":["img/12/1_blue.jpg"],
-                "green":["img/12/1_green.jpg"],
-                "pink":["img/12/1_pink.jpg"],
-                "grey":["img/12/1_grey.jpg"],
-                "yellow":["img/12/1_yellow.jpg"],
-                "orange":["img/12/1_orange.jpg"],
-                "purple":["img/12/1_purple.jpg"]
+                "blue":["img/12/1_blue.jpg", "img/12/2_blue.jpg"],
+                "green":["img/12/1_green.jpg", "img/12/2_green.jpg"],
+                "pink":["img/12/1_pink.jpg", "img/12/2_pink.jpg"],
+                "grey":["img/12/1_grey.jpg", "img/12/2_grey.jpg"],
+                "yellow":["img/12/1_yellow.jpg", "img/12/2_yellow.jpg"],
+                "orange":["img/12/1_orange.jpg", "img/12/2_orange.jpg"],
+                "purple":["img/12/1_purple.jpg", "img/12/2_purple.jpg"]
             },
             "currency":"USD",
             "storage":["512GO","1To","2To"],
@@ -233,7 +233,7 @@
             "release_date":"2020-11-17",
             "colors":["grey"],
             "images":{
-                "grey":["13/1_grey.jpg"]
+                "grey":["img/13/1_grey.jpg"]
             },
             "currency":"USD",
             "storage":["512GO","1To","2To","4To","8To"],
@@ -261,7 +261,7 @@
             "name":"Mac Pro",
             "price":["6499","6729","7 189","7 879","9 259"],
             "release_date":"2006-07-06",
-            "colors":"grey",
+            "colors":["grey"],
             "images":{
                 "grey":["img/15/1_grey.jpg"]
             },

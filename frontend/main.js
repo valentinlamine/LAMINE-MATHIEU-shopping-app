@@ -1,24 +1,23 @@
 const port = 3000;
-const ip_add = "localhost"
+const ip_add = "25.11.144.33"
 const url = "http://" + ip_add + ":" + port;
 
-const container = document.querySelector(".sneakers-ctn");
-const pickers = document.querySelectorAll(".picker");
+const card_container = document.querySelector(".sneakers-ctn");
+const sort_pickers = document.querySelectorAll(".picker");
 
-let sneakers;
-let filteredSneakers;
+var items;
+var filteredItems;
 
-function GetSneakers() {
-    fetch(url + "/sneakers")
+function GetItemsFromAPI() {
+    fetch(url + "/items")
         .then(response => {
             return response.json();
         })
         .then(data => {
-            sneakers = data.sneakers;
-            filteredSneakers = sneakers;
-            console.log(data.sneakers);
-            DisplaySneakers();
-            loadCart();
+            items = data.items;
+            filteredItems = items;
+            DisplayItemsCards();
+            DisplayCartItems();
         }
         )
         .catch(error => {
@@ -27,69 +26,95 @@ function GetSneakers() {
         )           
 }
 
-function DisplaySneakers() {
-    container.innerHTML = "";
-    filteredSneakers.forEach(sneaker => {
-        let sneakerCtn = document.createElement("div");
-        sneakerCtn.classList.add("sneaker-item");
-        sneakerCtn.innerHTML = `
-            <img class="sneaker-img" src="${sneaker.img_1}">
-            <div class="sneaker-name">${sneaker.name}</div>
-            <div class="sneaker-price">${sneaker.price} €</div>
-            <button onclick="addSneaker(${sneaker.id})">Ajour au panier</button>
+function DisplayItemsCards() {
+    card_container.innerHTML = "";
+    filteredItems.forEach(item => {
+        let itemCtn = document.createElement("div");
+        itemCtn.classList.add("item");
+        let color = item.colors[0];
+        let picker = GetPickerSelected();
+        if (picker.classList[1] !== "all") {
+            color = picker.classList[1];
+        }
+        itemCtn.innerHTML = `
+            <div class="images-ctn">`;
+            for (let i = 0; i < item.images[color].length; i++) {
+                    itemCtn.innerHTML += `<img class="sneaker-img" src="${item.images[color][i]}" alt="${item.name}">`;
+                }
+            itemCtn.innerHTML += `</div>
+            <div class="item-name">${item.name}</div>
+            <div class="item-price">À Partir de ${item.price[0]} €</div>
+            <button onclick="addItemToCartList(${item.id}, '${color}')">Ajouter au panier</button>
         `;
-        container.appendChild(sneakerCtn);
+        card_container.appendChild(itemCtn);
     });
 }
 
-pickers.forEach(picker => {
-    picker.addEventListener("click", selectItem);
+
+sort_pickers.forEach(picker => {
+    picker.addEventListener("click", selectSelectedPicker);
 });
 
-function selectItem(e) {
+function selectSelectedPicker(e) { 
     let picker = e.target;
-    let color = e.target.classList[2];
-    pickers.forEach((e) => {
+    let color = e.target.classList[1];
+    sort_pickers.forEach((e) => {
         e.classList.remove("selected");
     });
     picker.classList.add("selected");
-    console.log(color);
     filterByColor(color);
+}
+
+
+function GetPickerSelected() {
+    let pickerSelected;
+    sort_pickers.forEach(picker => {
+        if (picker.classList.contains("selected")) {
+            pickerSelected = picker;
+        }
+    });
+    return pickerSelected;
 }
 
 function filterByColor(color) {
     if (color === "all") {
-        filteredSneakers = sneakers;
-        DisplaySneakers();
+        filteredItems = items;
+        DisplayItemsCards();
     } else {
-        filteredSneakers = sneakers.filter(sneaker => sneaker.colors === color);
-        container.innerHTML = "";
-        if ( filteredSneakers.length <= 0) {
-            container.innerHTML = "Auune sneaker trouvée...";
+        filteredItems = items.filter(item => item.colors.includes(color));
+        card_container.innerHTML = "";
+        if ( filteredItems.length <= 0) {
+            card_container.innerHTML = "Aucun item trouvée...";
         } else {
-            DisplaySneakers();
+            DisplayItemsCards();
         }
     }
 }
 
-const priceBtn = document.querySelector(".price-btn");
-priceBtn.addEventListener("click", sortByPrice);
+const ascendentPriceBtn = document.querySelector(".ascendent-price-btn");
+const descendentPriceBtn = document.querySelector(".descendent-price-btn");
+ascendentPriceBtn.addEventListener("click", sortByAscendantPrice);
+descendentPriceBtn.addEventListener("click", sortByDescendantPrice);
 
-function CompareByPrice(a, b) {
-    return a.price - b.price;
+function sortByAscendantPrice() {
+    filteredItems.sort((a, b) => a.price[0] - b.price[0]);
+    DisplayItemsCards();
 }
 
-function sortByPrice() {
-    filteredSneakers.sort(CompareByPrice);
-    DisplaySneakers();
+function sortByDescendantPrice() {
+    filteredItems.sort((a, b) => b.price[0] - a.price[0]);
+    DisplayItemsCards();
 }
 
-GetSneakers();
+GetItemsFromAPI();
 
+
+
+// Cart
 const cartIcon = document.querySelector(".cart-icon");
 const cartCtn = document.querySelector(".cart-ctn");
 
-function toogleCart() {
+function OpenCart() {
     cartCtn.classList.toggle("open-cart");
     if (cartCtn.classList.contains("open-cart")) {
         cartIcon.src = "close.png";
@@ -98,37 +123,88 @@ function toogleCart() {
     }
 }
 
-cartIcon.addEventListener("click", toogleCart);
+cartIcon.addEventListener("click", OpenCart);
 
 //Local Storage
-let cartList = JSON.parse(localStorage.getItem("cart")) || [];
+let itemCartList = JSON.parse(localStorage.getItem("cart")) || [];
 
-function addSneaker(id) {
-    let sneaker = sneakers.find(sneaker => sneaker.id === id);
-    cartList.push(sneaker);
-    localStorage.setItem("cart", JSON.stringify(cartList));
-    console.log(cartList);
-    loadCart();
+function addItemToCartList(id, color) {
+    id = id.toString() // Convert id to string
+    
+    if (itemCartList.some(item => item.item.id === id && item.color === color)) { // Check if item is already in cart
+        itemCartList.forEach(item => { // If item is already in cart, increment quantity
+            if (item.item.id === id && item.color === color) { 
+                item.quantity++;
+            }
+        });
+        localStorage.setItem("cart", JSON.stringify(itemCartList)); // Update local storage
+        DisplayCartItems(); // Update cart
+        return; // Stop function
+    }
+     
+    let CartItem = {
+        item: items.find(item => item.id === id),
+        color: color,
+        quantity: 1
+    };
+    itemCartList.push(CartItem);
+    localStorage.setItem("cart", JSON.stringify(itemCartList));
+    console.log(itemCartList);
+    DisplayCartItems();
 }
 
-function loadCart() {
+function DisplayCartItems() {
     cartCtn.innerHTML = "";
-    cartList.forEach(sneaker => {
-        sneakercart = document.createElement("div");
-        sneakercart.classList.add("cart-item");
-        sneakercart.innerHTML = `
-            <img class="cart-sneaker-img" src="${sneaker.img_1}" alt="sneaker"/>
-            <div>${sneaker.name}</div>
-            <div>${sneaker.price} €</div>
-            <button onclick="removeFromCart(${sneaker.id})">Supprimer</button>
+    let totalprice = 0;
+    itemCartList.forEach(CartItem => {
+        totalprice += CartItem.item.price[0] * CartItem.quantity;
+        itemcart = document.createElement("div");
+        itemcart.classList.add("cart-item");
+        itemcart.innerHTML = `
+            <img class="cart-item-img" src="${CartItem.item.images[CartItem.color][0]}" alt="${CartItem.item.name}">
+            <div>${CartItem.item.name}</div>
+            <div>${CartItem.color}</div>
+            <div>${CartItem.item.price[0]} €</div>
+            <button onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}')">-</button>
+            <div>${CartItem.quantity}</div>
+            <button onclick="addOneItemToCart(${CartItem.item.id}, '${CartItem.color}')">+</button>
+            <button onclick="removeFromCart(${CartItem.item.id}, '${CartItem.color}')">X</button>
         `;
-        cartCtn.appendChild(sneakercart);
+        cartCtn.appendChild(itemcart);
     });
+    if (totalprice > 0) {
+        cartCtn.innerHTML += `<div class="total-price">Total : ${totalprice} €</div>`;
+    }
 }
 
-function removeFromCart(id) {
-    let indexToRemove = cartList.findIndex(sneaker => sneaker.id === id);
-    cartList.splice(indexToRemove, 1);
-    localStorage.setItem("cart", JSON.stringify(cartList));
-    loadCart();
+function removeFromCart(id, color) {
+    id = id.toString();
+    itemCartList = itemCartList.filter(item => item.item.id !== id || item.color !== color);
+    localStorage.setItem("cart", JSON.stringify(itemCartList));
+    DisplayCartItems();
+}
+
+function addOneItemToCart(id, color) {
+    id = id.toString();
+    itemCartList.forEach(item => {
+        if (item.item.id === id && item.color === color) {
+            item.quantity++;
+        }
+    });
+    localStorage.setItem("cart", JSON.stringify(itemCartList));
+    DisplayCartItems();
+}
+
+function removeOneItemFromCart(id, color) {
+    id = id.toString();
+    itemCartList.forEach(item => {
+        if (item.item.id === id && item.color === color) {
+            item.quantity--;
+            if (item.quantity <= 0) {
+                removeFromCart(id, color);
+            }
+        }
+    });
+    localStorage.setItem("cart", JSON.stringify(itemCartList));
+    DisplayCartItems();
 }
