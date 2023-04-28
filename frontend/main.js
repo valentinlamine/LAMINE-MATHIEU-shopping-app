@@ -110,6 +110,74 @@ function sortByDescendantPrice() {
     DisplayItemsCards();
 }
 
+const ipadBtn = document.querySelector("#iPad-Btn");
+const iphoneBtn = document.querySelector("#iPhone-Btn");
+const macBtn = document.querySelector("#Mac-Btn");
+const allBtn= document.querySelector("#all-Btn");
+
+ipadBtn.addEventListener("click", GetIpadFromAPI);
+iphoneBtn.addEventListener("click", GetIphoneFromAPI);
+macBtn.addEventListener("click", GetMacFromAPI);
+allBtn.addEventListener("click", GetItemsFromAPI);
+
+function GetIpadFromAPI(){
+    fetch(url + "/ipad")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            items = data.items;
+            filteredItems = items;
+            DisplayItemsCards();
+            DisplayCartItems();
+        }
+        )
+        .catch(error => {
+            console.log(error);
+        }
+        ) 
+}  
+
+function GetIphoneFromAPI(){
+    fetch(url + "/iphone")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            items = data.items;
+            filteredItems = items;
+            DisplayItemsCards();
+            DisplayCartItems();
+        }
+        )
+        .catch(error => {
+            console.log(error);
+        }
+        ) 
+}
+
+function GetMacFromAPI(){
+    fetch(url + "/mac")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            items = data.items;
+            filteredItems = items;
+            DisplayItemsCards();
+            DisplayCartItems();
+        }
+        )
+        .catch(error => {
+            console.log(error);
+        }
+        ) 
+}
+    
+ 
+
+
+
 GetItemsFromAPI();
 
 

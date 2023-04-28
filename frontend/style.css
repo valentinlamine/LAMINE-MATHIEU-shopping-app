@@ -113,13 +113,14 @@ header {
     padding: 0px 100px;
 }
 
-header a {
-    font-weight: lighter;
+header button {
     color: #111111;
     text-decoration: none;
-    font-weight: 500;
+    font-size: larger;
     margin: 0 10px;
     padding: 10px 5px;
+    background: none;
+    border: none;
 }
 
 header .logo {
@@ -160,6 +161,7 @@ footer a {
   display: flex;
   justify-content:space-between ;
   align-items: center;
+  margin-left: 5px;
 }
 
 #selector button{
@@ -178,4 +180,8 @@ button{
   color: #F5F5F5;
   border-radius: 980px;
   border: none;
+}
+
+button:hover{
+  cursor: pointer;
 }
