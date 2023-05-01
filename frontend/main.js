@@ -22,9 +22,11 @@ descendentPriceBtn.addEventListener("click", sortByDescendantPrice);
 function GetSelectedValue() {
     let selectedColor = document.querySelector("#color-selector option:checked").value;
     let selectedDevice = document.querySelector(".device-selector input:checked").value;
-    console.log(selectedColor);
-    console.log(selectedDevice);
     filterItems(selectedColor, selectedDevice);
+}
+
+function UpdateStorage(selector) {
+    console.log(selector);
 }
 
 function filterItems(color, device) {
@@ -37,7 +39,6 @@ function filterItems(color, device) {
     } else {
         filteredItems = items.filter(item => item.device === device && item.colors.includes(color));
     }
-    console.log(filteredItems);
     DisplayItemsCards(color);
 }
 
@@ -77,11 +78,52 @@ function DisplayItemsCards(color) {
                 }
             itemCtn.innerHTML += `</div>
             <div class="item-name">${item.name}</div>
-            <div class="item-price">À Partir de ${item.price[0]} €</div>
-            <button onclick="addItemToCartList(${item.id}, '${color}')">Ajouter au panier</button>
+            <div class="item-price">À Partir de ${item.price[0]} €</div>`;
+            let storageselector = `
+            <select class="storage-selector" name="storage">
+            <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
+            item.storage.forEach(storage => {
+                storageselector += `<option value="${storage}">${storage}</option>`;
+            })
+            storageselector += `</select>`;
+            itemCtn.innerHTML += storageselector;
+            itemCtn.innerHTML += `
+            <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
         `;
         card_container.appendChild(itemCtn);
     });
+}
+
+function FoundItemStorage(btn, id, color) {
+    let storage = btn.previousElementSibling.options[btn.previousElementSibling.selectedIndex].value;
+    if (storage !== "none") {
+        btn.setAttribute("onclick", `addItemToCart(${id}, '${color}', '${storage}')`);
+        btn.click();
+        btn.setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
+        btn.innerHTML = "Ajouté au panier";
+        setTimeout(() => {
+            btn.innerHTML = "Ajouter au panier";
+        }, 2000);
+    } else {
+        btn.previousElementSibling.style.border = "1px solid red";
+        setTimeout(() => {
+            btn.previousElementSibling.style.border = "1px solid black";
+        }, 500);
+        //make vibrate the selector
+        btn.previousElementSibling.animate([
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+        ], {
+            duration: 500,
+            iterations: 1
+        });
+    }
 }
 
 function sortByAscendantPrice() {
