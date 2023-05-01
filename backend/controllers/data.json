@@ -6,6 +6,7 @@
             "price": ["559", "629", "759"],
             "release_date": "2022-03-18",
             "colors": ["black", "white", "red"],
+            "device": "iphone",
             "images": {
                 "red": ["img/1/1_red.jpg", "img/1/2_red.jpg", "img/1/3_red.jpg"],
                 "black": ["img/1/1_black.jpg", "img/1/2_black.jpg", "img/1/3_black.jpg"],
@@ -23,6 +24,7 @@
             "price": ["809", "859", "979"],
             "release_date": "2020-10-23",
             "colors": ["black", "white", "red", "green", "purple", "blue"],
+            "device": "iphone",
             "images": {
                 "red": ["img/2/1_red.jpg", "img/2/2_red.jpg", "img/2/3_red.jpg"],
                 "black": ["img/2/1_black.jpg", "img/2/2_black.jpg", "img/2/3_black.jpg"],
@@ -43,6 +45,7 @@
             "price": ["909", "1029", "1259"],
             "release_date": "2021-09-24",
             "colors": ["black", "white", "red", "green", "pink", "blue"],
+            "device": "iphone",
             "images": {
                 "red": ["img/3/1_red.jpg", "img/3/2_red.jpg", "img/3/3_red.jpg"],
                 "black": ["img/3/1_black.jpg", "img/3/2_black.jpg", "img/3/3_black.jpg"],
@@ -63,6 +66,7 @@
             "price": ["1019", "1149", "1409"],
             "release_date": "2022-10-17",
             "colors": ["black", "white", "red", "yellow", "purple", "blue"],
+            "device": "iphone",
             "images": {
                 "red": ["img/4/1_red.jpg", "img/4/2_red.jpg", "img/4/3_red.jpg"],
                 "black": ["img/4/1_black.jpg", "img/4/2_black.jpg", "img/4/3_black.jpg"],
@@ -83,6 +87,7 @@
             "price": ["1479", "1609", "1869", "2129"],
             "release_date": "2022-10-17",
             "colors": ["black", "white", "yellow", "purple"],
+            "device": "iphone",
             "images": {
                 "yellow": ["img/5/1_yellow.jpg", "img/5/2_yellow.jpg", "img/5/3_yellow.jpg"],
                 "black": ["img/5/1_black.jpg", "img/5/2_black.jpg", "img/5/3_black.jpg"],
@@ -103,6 +108,7 @@
             "price":["1069","1199","1449","1949","2249"],
             "release_date":"2020-03-20",
             "colors":["grey","white"],
+            "device": "ipad",
             "images":{
                 "grey":["img/6/1_grey.jpg", "img/6/2_grey.jpg", "img/6/3_grey.jpg"],
                 "white":["img/6/1_white.jpg", "img/6/2_white.jpg", "img/6/3_white.jpg"]
@@ -119,6 +125,7 @@
             "price":["789","989"],
             "release_date":"2020-10-20",
             "colors":["grey","blue","pink","purple","white"],
+            "device": "ipad",
             "images":{
                 "grey":["img/7/1_grey.jpg", "img/7/2_grey.jpg", "img/7/3_grey.jpg"],
                 "blue":["img/7/1_blue.jpg", "img/7/2_blue.jpg", "img/7/3_blue.jpg"],
@@ -139,6 +146,7 @@
             "price":["589","789"],
             "release_date":"2020-10-26",
             "colors":["grey","pink","yellow","blue"],
+            "device": "ipad",
             "images":{
                 "blue":["img/8/1_blue.jpg", "img/8/2_blue.jpg", "img/8/3_blue.jpg"],
                 "pink":["img/8/1_pink.jpg", "img/8/2_pink.jpg", "img/8/3_pink.jpg"],
@@ -157,6 +165,7 @@
             "price":["659","859"],
             "release_date":"2012-11-02",
             "colors":["grey","pink","purple","white"],
+            "device": "ipad",
             "images":{
                 "grey":["img/9/1_grey.jpg", "img/9/2_grey.jpg", "img/9/3_grey.jpg"],
                 "pink":["img/9/1_pink.jpg", "img/9/2_pink.jpg", "img/9/3_pink.jpg"],
@@ -177,6 +186,7 @@
             "price":["1499","1849"],
             "release_date":"2022-07-15",
             "colors":["grey", "black","white"],
+            "device": "mac",
             "images":{
                 "black":["img/10/1_black.jpg"],
                 "white":["img/10/1_white.jpg"],
@@ -194,6 +204,7 @@
             "price":["4149","4609","5299","6679"],
             "release_date":"2023-01-24",
             "colors":["grey"],
+            "device": "mac",
             "images":{
                 "grey":["img/11/1_grey.jpg"]    
             }, 
@@ -210,6 +221,7 @@
             "price":["2009","2239","2699"],
             "release_date":"2023-02-10",
             "colors":["grey","blue","green","pink","yellow","orange","purple"],
+            "device": "mac",
             "images":{
                 "blue":["img/12/1_blue.jpg", "img/12/2_blue.jpg"],
                 "green":["img/12/1_green.jpg", "img/12/2_green.jpg"],
@@ -232,6 +244,7 @@
             "price":["1 549","1 779","2 239","2 929","4 309"],
             "release_date":"2020-11-17",
             "colors":["grey"],
+            "device": "mac",
             "images":{
                 "grey":["img/13/1_grey.jpg"]
             },
@@ -247,6 +260,7 @@
             "price":["4 599","5 059","5 749","7 129"],
             "release_date":"2022-03-18",
             "colors":["grey"],
+            "device": "mac",
             "images":{
                 "grey":["img/14/1_grey.jpg"]
             },
@@ -262,6 +276,7 @@
             "price":["6499","6729","7 189","7 879","9 259"],
             "release_date":"2006-07-06",
             "colors":["grey"],
+            "device": "mac",
             "images":{
                 "grey":["img/15/1_grey.jpg"]
             },

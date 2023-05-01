@@ -1,0 +1,8 @@
+#items-detail{
+    display: flex;
+    justify-content: center;
+}
+#price-detail{
+    display: flex;
+    justify-content: center;
+}

@@ -5,18 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>How To Sell Online</title>
 </head>
 <body>
     <header>
         <div class="logo">
                <img src="/frontend/img/logo/apple-logo.svg" alt="logo apple">
         </div>
-        <nav>
-            <button id="all-Btn">All</button>
-            <button id="iPhone-Btn">iPhone</button>
-            <button id="iPad-Btn">iPad</button>
-            <button id="Mac-Btn">Mac</button>
+        <nav class="nav-bar device-selector">
+            <input type="radio" name="device" id="device-all" value="all" checked>
+            <label for="device-all">All Device</label>
+            <input type="radio" name="device" id="device-iphone" value="iphone">
+            <label for="device-iphone">iPhone</label>
+            <input type="radio" name="device" id="device-ipad" value="ipad">
+            <label for="device-ipad">iPad</label>
+            <input type="radio" name="device" id="device-mac" value="mac">
+            <label for="device-mac">Mac</label>
+            <a href="detail.html" style="position: absolute; top:0; left: 0">Detail</a>
         </nav>
 
 
@@ -24,26 +29,26 @@
     
     <img class="cart-icon" src="cart.png" alt="">
     <div class="cart-ctn">
-        
 
     </div>
     <div id="selector">
-        <div class="color-picker-ctn">
-            <div class="picker all selected">All</div>
-            <div class="picker white"></div>
-            <div class="picker grey"></div>
-            <div class="picker red"></div>
-            <div class="picker blue"></div>
-            <div class="picker green"></div>
-            <div class="picker yellow"></div>
-            <div class="picker pink"></div>
-            <div class="picker orange"></div>
-            <div class="picker purple"></div>
-            <div class="picker black"></div>
-        </div>
+        <label for="color-selector">Select a color</label>
+        <select class="color-selector" name="color" id="color-selector">
+            <option value="all">All colors</option>
+            <option value="black">Black</option>
+            <option value="grey">Grey</option>
+            <option value="white">White</option>
+            <option value="pink">Pink</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+        </select>
         <div id="selector-buttons">
-        <button class="ascendent-price-btn">Trier par prix croissant</button>
-        <button class="descendent-price-btn">Trier par prix décroissant</button>
+        <button class="ascendant-price-btn">Sort by ascendant price</button>
+        <button class="descendent-price-btn">Sort by descendent price</button>
         </div>
     </div>
     
@@ -56,5 +61,6 @@
         <p>Créé par <a href="https://github.com/valentinlamine">Valentin LAMINE</a> et <a href="https://github.com/PhilippeMath49">Philippe MATHIEU</a></p>
     </footer>
     <script src="main.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
