@@ -70,7 +70,7 @@ function removeOneItemFromCart(id, color, capacity) {
         if (item.item.id === id && item.color === color && item.capacity === capacity) {
             item.quantity--;
             if (item.quantity <= 0) {
-                removeFromCart(id, color);
+                removeFromCart(id, color, capacity);
             }
         }
     });
@@ -101,11 +101,11 @@ function DisplayCartItems() {
         cartItem.innerHTML = `
             <img class="cart-item-img" src="${CartItem.item.images[CartItem.color][0]}" alt="${CartItem.item.name}">
             <div>${CartItem.item.name} ${CartItem.capacity} ${CartItem.color}</div>
-            <div>${FindPrice(CartItem.item, CartItem.capacity)} €</div>
-            <button onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}')">-</button>
+            <div>${FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity} €</div>
+            <button onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">-</button>
             <div>${CartItem.quantity}</div>
-            <button onclick="addOneItemToCart(${CartItem.item.id}, '${CartItem.color}')">+</button>
-            <button onclick="removeFromCart(${CartItem.item.id}, '${CartItem.color}')">X</button>
+            <button onclick="addOneItemToCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">+</button>
+            <button onclick="removeFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">Remove</button>
         `;
         cartCtn.appendChild(cartItem);
     });
