@@ -10,6 +10,12 @@
 }
 
 @font-face {
+    font-family: 'SF Pro Text';
+    src: url('../fonts/SF-Pro-Text-Light.otf');
+    font-weight: 100;
+}
+
+@font-face {
     font-family: 'SF Pro Display';
     src: url('../fonts/SF-Pro-Display-Medium.otf');
 }

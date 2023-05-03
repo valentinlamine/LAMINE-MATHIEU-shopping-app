@@ -3,6 +3,7 @@ const cartIcon = document.querySelector(".cart-icon");
 const cartCtn = document.querySelector(".cart-ctn");
 let itemCartList = JSON.parse(localStorage.getItem("cart")) || [];
 
+
 // Event Listeners
 cartIcon.addEventListener("click", OpenCart);
 
@@ -126,6 +127,8 @@ function FindPrice(item, capacity) {
         }
     }
 }
+
+
 
 //Init
 DisplayCartItems();

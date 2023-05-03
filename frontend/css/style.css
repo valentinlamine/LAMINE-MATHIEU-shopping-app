@@ -64,16 +64,15 @@ header .logo  img {
 
 }
 
-.blue { background-color: #00f; color: #fff; }
-.red { background-color: #f00; color: #fff; }
-.green { background-color: #0f0; color: #fff; }
-.yellow { background-color: #ff0; color: #000; }
-.purple { background-color: purple; color: #fff; }
-.orange { background-color: #f90; color: #fff; }
-.pink { background-color: #f0f; color: #fff; }
-.grey { background-color: #ccc; color: #000; }
-.white { background-color: #fff; color: #000; }
-.black { background-color: #000; color: #fff; }
+.red { background-color: #f00; width: 30px; height: 30px; border-radius: 50%; }
+.green { background-color: #0f0; width: 30px; height: 30px; border-radius: 50%; }
+.yellow { background-color: #ff0; width: 30px; height: 30px; border-radius: 50%; }
+.purple { background-color: purple; width: 30px; height: 30px; border-radius: 50%; }
+.orange { background-color: #f90; width: 30px; height: 30px; border-radius: 50%; }
+.pink { background-color: #f0f; width: 30px; height: 30px; border-radius: 50%; }
+.grey { background-color: #ccc; width: 30px; height: 30px; border-radius: 50%; }
+.white { background-color: #fff; width: 30px; height: 30px; border-radius: 50%; }
+.black { background-color: #000; width: 30px; height: 30px; border-radius: 50%; }
 
 .device-selector > input {
     display: none;
@@ -118,19 +117,10 @@ button:active {
     background: rgb(0, 110, 219);
     transform: translateY(1px);
 }
-
 /* End general style */
 
 
-
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 334px;
-    gap: 10px;
-}
-
+/* Items */
 .items-ctn {
     display: flex;
     align-items: center;
@@ -139,19 +129,143 @@ button:active {
     width: 100vw;
     gap: 20px;
     margin: 20px 0;
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+
+.item {
+    display: flex;
+    align-items: center;
+    width: 550px;
+    height: 300px;
     background-color: #f5f5f7;
+    border-radius: 10px;
+    overflow: hidden;
+    border: black 1px solid;
+}
+
+.item .left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.item .left .left-img {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    top: 50%;
+}
+
+.item .left .right-img {
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 50%;
 }
 
 .item-img {
-    height: 200px;
     display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 1px solid #aaa;
+}
+
+.item-img.mac {
+    object-fit: contain;
+    background-color: #ffff;
 }
 
 .item-img.active {
     display: block;
 }
 
+.item .right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+}
 
+.item .right .first-group {
+    text-align: center;
+    width: 100%;
+}
+
+.item .right .first-group .item-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item .right .first-group .item-price {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.item .right .second-group select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 100;
+    outline: none;
+}
+
+.item .right .second-group select:focus {
+    border: 1px solid #007AFF;
+}
+
+.item .right .second-group option {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.item .right .third-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #70708F;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item .right .third-group button {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.item .right .third-group button:first-child {
+    background: none;
+    border-radius: 0;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.item .right .third-group button:first-child:hover {
+    transform: none;
+    color: #eee;
+}
+
+.item .right .third-group button:first-child:active {
+    transform: translateY(1px);
+}
+
+/* End Items */
 
 
 

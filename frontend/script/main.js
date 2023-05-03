@@ -17,16 +17,19 @@ document.querySelector("#color-selector").addEventListener("change", GetSelected
 document.querySelector(".device-selector").addEventListener("change", GetSelectedValue);
 ascendantPriceBtn.addEventListener("click", sortByAscendantPrice);
 descendentPriceBtn.addEventListener("click", sortByDescendantPrice);
+document.addEventListener("change", function(e) {
+    if (e.target.classList.contains("color-selector")) {
+        if (e.target.value !== "all") {
+            UpdateColor(e.target.parentElement.parentElement.parentElement, e.target.value);
+        }
+    }
+});
 
 // Functions
 function GetSelectedValue() {
     let selectedColor = document.querySelector("#color-selector option:checked").value;
     let selectedDevice = document.querySelector(".device-selector input:checked").value;
     filterItems(selectedColor, selectedDevice);
-}
-
-function UpdateStorage(selector) {
-    console.log(selector);
 }
 
 function filterItems(color, device) {
@@ -59,43 +62,9 @@ function GetItemsFromAPI() {
         )
 }
 
-function DisplayItemsCards(color) {
-    card_container.innerHTML = "";
-    filteredItems.forEach(item => {
-        if (!item.colors.includes(color)) {
-            color = item.colors[0];
-        }
-        let itemCtn = document.createElement("div");
-        itemCtn.classList.add("item");
-        itemCtn.innerHTML = `
-            <div class="images-ctn">`;
-            for (let i = 0; i < item.images[color].length; i++) {
-                    if (i === 0) {
-                        itemCtn.innerHTML += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
-                    } else {
-                        itemCtn.innerHTML += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;
-                    }
-                }
-            itemCtn.innerHTML += `</div>
-            <div class="item-name">${item.name}</div>
-            <div class="item-price">À Partir de ${item.price[0]} €</div>`;
-            let storageselector = `
-            <select class="storage-selector" name="storage">
-            <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
-            item.storage.forEach(storage => {
-                storageselector += `<option value="${storage}">${storage}</option>`;
-            })
-            storageselector += `</select>`;
-            itemCtn.innerHTML += storageselector;
-            itemCtn.innerHTML += `
-            <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
-        `;
-        card_container.appendChild(itemCtn);
-    });
-}
-
 function FoundItemStorage(btn, id, color) {
-    let storage = btn.previousElementSibling.options[btn.previousElementSibling.selectedIndex].value;
+    let storage_input = btn.parentElement.previousElementSibling.querySelector(".storage-selector");
+    let storage = storage_input.options[storage_input.selectedIndex].value;
     if (storage !== "none") {
         btn.setAttribute("onclick", `addItemToCart(${id}, '${color}', '${storage}')`);
         btn.click();
@@ -105,12 +74,12 @@ function FoundItemStorage(btn, id, color) {
             btn.innerHTML = "Ajouter au panier";
         }, 2000);
     } else {
-        btn.previousElementSibling.style.border = "1px solid red";
+        storage_input.style.border = "1px solid red";
         setTimeout(() => {
-            btn.previousElementSibling.style.border = "1px solid black";
+            storage_input.style.border = "1px solid black";
         }, 500);
         //make vibrate the selector
-        btn.previousElementSibling.animate([
+        storage_input.animate([
             { transform: 'translateX(-2px)' },
             { transform: 'translateX(2px)' },
             { transform: 'translateX(-2px)' },
@@ -126,6 +95,60 @@ function FoundItemStorage(btn, id, color) {
     }
 }
 
+function DisplayItemsCards(color) {
+    card_container.innerHTML = "";
+    filteredItems.forEach(item => {
+        if (!item.colors.includes(color)) {
+            color = item.colors[0];
+        }
+        let itemCtn = document.createElement("div");
+        itemCtn.classList.add("item");
+
+        //Génération de la partie gauche
+        let HTMLContent = `<div class="left">`;
+        if (item.images[color].length > 1) {HTMLContent += `
+            <a onclick="PreviousImage(this.nextElementSibling.nextElementSibling)"><img class="left-img" src="img/other/left.svg"></a>
+            <a onclick="NextImage(this.nextElementSibling)"><img class="right-img" src="img/other/right.svg"></a>`;}
+        HTMLContent += `<div class="item-imgs">`;
+        for (let i = 0; i < item.images[color].length; i++) {
+            if (item.device !== "mac") {
+                if (i === 0) {HTMLContent += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
+                } else {HTMLContent += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;}
+            } else {
+                if (i === 0) {HTMLContent += `<img class="item-img mac active" src="${item.images[color][i]}" alt="${item.name}">`;
+                } else {HTMLContent += `<img class="item-img mac" src="${item.images[color][i]}" alt="${item.name}" style="display: none;">`;}}}
+        HTMLContent += `</div></div>`;
+
+        //Génération de la partie droite
+        HTMLContent += `<div class="right">
+            <div class="first-group">
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">À Partir de ${item.price[0]} €</div></div>
+            <div class="second-group">
+                <select class="item color-selector" name="color">`;
+                item.colors.forEach(color => {HTMLContent += `<option value="${color}">${color}</option>`;});
+        HTMLContent += `</select>
+            <select class="storage-selector" name="storage">
+                <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
+                item.storage.forEach(storage => {HTMLContent += `<option value="${storage}">${storage}</option>`;})
+        HTMLContent += `</select></div>
+            <div class="third-group">
+                <button onclick="details(${item.id}, '${color}')">Voir fiche produit</button>
+                <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
+            </div></div>`;
+        itemCtn.innerHTML += HTMLContent;
+        card_container.appendChild(itemCtn);
+    });
+}
+
+function UpdateColor(selector, color) {
+    selector.querySelectorAll(".left .item-imgs .item-img").forEach(img => {
+        let img_splited = img.src.split("/");
+        img_splited[img_splited.length - 1] = color + ".jpg";
+        img.src = img_splited.join("/");
+    });
+}
+
 function sortByAscendantPrice() {
     filteredItems.sort((a, b) => a.price[0] - b.price[0]);
     DisplayItemsCards();
@@ -134,6 +157,42 @@ function sortByAscendantPrice() {
 function sortByDescendantPrice() {
     filteredItems.sort((a, b) => b.price[0] - a.price[0]);
     DisplayItemsCards();
+}
+
+function NextImage(img_ctn) {
+    for (let i = 0; i < img_ctn.children.length; i++) {
+        if (img_ctn.children[i].classList.contains("active")) {
+            img_ctn.children[i].classList.remove("active");
+            if (i === 0) {
+                img_ctn.children[img_ctn.children.length - 1].classList.add("active");
+            } else {
+                img_ctn.children[i - 1].classList.add("active");
+            }
+            break;
+        }
+    }
+}
+
+function PreviousImage(img_ctn) {
+    for (let i = 0; i < img_ctn.children.length; i++) {
+        if (img_ctn.children[i].classList.contains("active")) {
+            img_ctn.children[i].classList.remove("active");
+            if (i === img_ctn.children.length - 1) {
+                img_ctn.children[0].classList.add("active");
+            } else {
+                img_ctn.children[i + 1].classList.add("active");
+            }
+            break;
+        }
+    }
+}
+
+//detail
+
+function details(id,color){
+    const detail= { id, color};
+    localStorage.setItem("details", JSON.stringify(detail));
+    window.location.href= "detail.html";
 }
 
 // Init App

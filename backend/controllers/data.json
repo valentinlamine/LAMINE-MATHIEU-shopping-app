@@ -8,9 +8,9 @@
             "colors": ["black", "white", "red"],
             "device": "iphone",
             "images": {
-                "red": ["img/1/1_red.jpg", "img/1/2_red.jpg", "img/1/3_red.jpg"],
-                "black": ["img/1/1_black.jpg", "img/1/2_black.jpg", "img/1/3_black.jpg"],
-                "white": ["img/1/1_white.jpg", "img/1/2_white.jpg", "img/1/3_white.jpg"]
+                "red": ["img/1/1/red.jpg", "img/1/2/red.jpg", "img/1/3/red.jpg"],
+                "black": ["img/1/1/black.jpg", "img/1/2/black.jpg", "img/1/3/black.jpg"],
+                "white": ["img/1/1/white.jpg", "img/1/2/white.jpg", "img/1/3/white.jpg"]
             },
             "currency": "USD",
             "storage": ["64GB", "128GB", "256GB"],
@@ -26,12 +26,12 @@
             "colors": ["black", "white", "red", "green", "purple", "blue"],
             "device": "iphone",
             "images": {
-                "red": ["img/2/1_red.jpg", "img/2/2_red.jpg", "img/2/3_red.jpg"],
-                "black": ["img/2/1_black.jpg", "img/2/2_black.jpg", "img/2/3_black.jpg"],
-                "white": ["img/2/1_white.jpg", "img/2/2_white.jpg", "img/2/3_white.jpg"],
-                "green": ["img/2/1_green.jpg", "img/2/2_green.jpg", "img/2/3_green.jpg"],
-                "purple": ["img/2/1_purple.jpg", "img/2/2_purple.jpg", "img/2/3_purple.jpg"],
-                "blue": ["img/2/1_blue.jpg", "img/2/2_blue.jpg", "img/2/3_blue.jpg"]
+                "red": ["img/2/1/red.jpg", "img/2/2/red.jpg", "img/2/3/red.jpg"],
+                "black": ["img/2/1/black.jpg", "img/2/2/black.jpg", "img/2/3/black.jpg"],
+                "white": ["img/2/1/white.jpg", "img/2/2/white.jpg", "img/2/3/white.jpg"],
+                "green": ["img/2/1/green.jpg", "img/2/2/green.jpg", "img/2/3/green.jpg"],
+                "purple": ["img/2/1/purple.jpg", "img/2/2/purple.jpg", "img/2/3/purple.jpg"],
+                "blue": ["img/2/1/blue.jpg", "img/2/2/blue.jpg", "img/2/3/blue.jpg"]
             },
             "currency": "USD",
             "storage": ["64GB", "128GB", "256GB"],
@@ -47,12 +47,12 @@
             "colors": ["black", "white", "red", "green", "pink", "blue"],
             "device": "iphone",
             "images": {
-                "red": ["img/3/1_red.jpg", "img/3/2_red.jpg", "img/3/3_red.jpg"],
-                "black": ["img/3/1_black.jpg", "img/3/2_black.jpg", "img/3/3_black.jpg"],
-                "white": ["img/3/1_white.jpg", "img/3/2_white.jpg", "img/3/3_white.jpg"],
-                "green": ["img/3/1_green.jpg", "img/3/2_green.jpg", "img/3/3_green.jpg"],
-                "pink": ["img/3/1_pink.jpg", "img/3/2_pink.jpg", "img/3/3_pink.jpg"],
-                "blue": ["img/3/1_blue.jpg", "img/3/2_blue.jpg", "img/3/3_blue.jpg"]
+                "red": ["img/3/1/red.jpg", "img/3/2/red.jpg", "img/3/3/red.jpg"],
+                "black": ["img/3/1/black.jpg", "img/3/2/black.jpg", "img/3/3/black.jpg"],
+                "white": ["img/3/1/white.jpg", "img/3/2/white.jpg", "img/3/3/white.jpg"],
+                "green": ["img/3/1/green.jpg", "img/3/2/green.jpg", "img/3/3/green.jpg"],
+                "pink": ["img/3/1/pink.jpg", "img/3/2/pink.jpg", "img/3/3/pink.jpg"],
+                "blue": ["img/3/1/blue.jpg", "img/3/2/blue.jpg", "img/3/3/blue.jpg"]
             },
             "currency": "USD",
             "storage": ["128GB", "256GB", "512GB"],
@@ -68,12 +68,12 @@
             "colors": ["black", "white", "red", "yellow", "purple", "blue"],
             "device": "iphone",
             "images": {
-                "red": ["img/4/1_red.jpg", "img/4/2_red.jpg", "img/4/3_red.jpg"],
-                "black": ["img/4/1_black.jpg", "img/4/2_black.jpg", "img/4/3_black.jpg"],
-                "white": ["img/4/1_white.jpg", "img/4/2_white.jpg", "img/4/3_white.jpg"],
-                "yellow": ["img/4/1_yellow.jpg", "img/4/2_yellow.jpg", "img/4/3_yellow.jpg"],
-                "purple": ["img/4/1_purple.jpg", "img/4/2_purple.jpg", "img/4/3_purple.jpg"],
-                "blue": ["img/4/1_blue.jpg", "img/4/2_blue.jpg", "img/4/3_blue.jpg"]
+                "red": ["img/4/1/red.jpg", "img/4/2/red.jpg", "img/4/3/red.jpg"],
+                "black": ["img/4/1/black.jpg", "img/4/2/black.jpg", "img/4/3/black.jpg"],
+                "white": ["img/4/1/white.jpg", "img/4/2/white.jpg", "img/4/3/white.jpg"],
+                "yellow": ["img/4/1/yellow.jpg", "img/4/2/yellow.jpg", "img/4/3/yellow.jpg"],
+                "purple": ["img/4/1/purple.jpg", "img/4/2/purple.jpg", "img/4/3/purple.jpg"],
+                "blue": ["img/4/1/blue.jpg", "img/4/2/blue.jpg", "img/4/3/blue.jpg"]
             },
             "currency": "USD",
             "storage": ["128GB", "256GB", "512GB"],
@@ -89,10 +89,10 @@
             "colors": ["black", "white", "yellow", "purple"],
             "device": "iphone",
             "images": {
-                "yellow": ["img/5/1_yellow.jpg", "img/5/2_yellow.jpg", "img/5/3_yellow.jpg"],
-                "black": ["img/5/1_black.jpg", "img/5/2_black.jpg", "img/5/3_black.jpg"],
-                "white": ["img/5/1_white.jpg", "img/5/2_white.jpg", "img/5/3_white.jpg"],
-                "purple": ["img/5/1_purple.jpg", "img/5/2_purple.jpg", "img/5/3_purple.jpg"]
+                "yellow": ["img/5/1/yellow.jpg", "img/5/2/yellow.jpg", "img/5/3/yellow.jpg"],
+                "black": ["img/5/1/black.jpg", "img/5/2/black.jpg", "img/5/3/black.jpg"],
+                "white": ["img/5/1/white.jpg", "img/5/2/white.jpg", "img/5/3/white.jpg"],
+                "purple": ["img/5/1/purple.jpg", "img/5/2/purple.jpg", "img/5/3/purple.jpg"]
             },
             "currency": "USD",
             "storage": ["128GB", "256GB", "512GB", "1TB"],
@@ -110,8 +110,8 @@
             "colors":["grey","white"],
             "device": "ipad",
             "images":{
-                "grey":["img/6/1_grey.jpg", "img/6/2_grey.jpg", "img/6/3_grey.jpg"],
-                "white":["img/6/1_white.jpg", "img/6/2_white.jpg", "img/6/3_white.jpg"]
+                "grey":["img/6/1/grey.jpg", "img/6/2/grey.jpg", "img/6/3/grey.jpg"],
+                "white":["img/6/1/white.jpg", "img/6/2/white.jpg", "img/6/3/white.jpg"]
             },
             "currency":"USD",
             "storage": ["128GB","256GB","512GB","1TB","2TB"],
@@ -127,11 +127,11 @@
             "colors":["grey","blue","pink","purple","white"],
             "device": "ipad",
             "images":{
-                "grey":["img/7/1_grey.jpg", "img/7/2_grey.jpg", "img/7/3_grey.jpg"],
-                "blue":["img/7/1_blue.jpg", "img/7/2_blue.jpg", "img/7/3_blue.jpg"],
-                "pink":["img/7/1_pink.jpg", "img/7/2_pink.jpg", "img/7/3_pink.jpg"],
-                "purple":["img/7/1_purple.jpg", "img/7/2_purple.jpg", "img/7/3_purple.jpg"],
-                "white":["img/7/1_white.jpg", "img/7/2_white.jpg", "img/7/3_white.jpg"]
+                "grey":["img/7/1/grey.jpg", "img/7/2/grey.jpg", "img/7/3/grey.jpg"],
+                "blue":["img/7/1/blue.jpg", "img/7/2/blue.jpg", "img/7/3/blue.jpg"],
+                "pink":["img/7/1/pink.jpg", "img/7/2/pink.jpg", "img/7/3/pink.jpg"],
+                "purple":["img/7/1/purple.jpg", "img/7/2/purple.jpg", "img/7/3/purple.jpg"],
+                "white":["img/7/1/white.jpg", "img/7/2/white.jpg", "img/7/3/white.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -148,10 +148,10 @@
             "colors":["grey","pink","yellow","blue"],
             "device": "ipad",
             "images":{
-                "blue":["img/8/1_blue.jpg", "img/8/2_blue.jpg", "img/8/3_blue.jpg"],
-                "pink":["img/8/1_pink.jpg", "img/8/2_pink.jpg", "img/8/3_pink.jpg"],
-                "yellow":["img/8/1_yellow.jpg", "img/8/2_yellow.jpg", "img/8/3_yellow.jpg"],
-                "grey":["img/8/1_grey.jpg", "img/8/2_grey.jpg", "img/8/3_grey.jpg"]
+                "blue":["img/8/1/blue.jpg", "img/8/2/blue.jpg", "img/8/3/blue.jpg"],
+                "pink":["img/8/1/pink.jpg", "img/8/2/pink.jpg", "img/8/3/pink.jpg"],
+                "yellow":["img/8/1/yellow.jpg", "img/8/2/yellow.jpg", "img/8/3/yellow.jpg"],
+                "grey":["img/8/1/grey.jpg", "img/8/2/grey.jpg", "img/8/3/grey.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -167,10 +167,10 @@
             "colors":["grey","pink","purple","white"],
             "device": "ipad",
             "images":{
-                "grey":["img/9/1_grey.jpg", "img/9/2_grey.jpg", "img/9/3_grey.jpg"],
-                "pink":["img/9/1_pink.jpg", "img/9/2_pink.jpg", "img/9/3_pink.jpg"],
-                "purple":["img/9/1_purple.jpg", "img/9/2_purple.jpg", "img/9/3_purple.jpg"],
-                "white":["img/9/1_white.jpg", "img/9/2_white.jpg", "img/9/3_white.jpg"]
+                "grey":["img/9/1/grey.jpg", "img/9/2/grey.jpg", "img/9/3/grey.jpg"],
+                "pink":["img/9/1/pink.jpg", "img/9/2/pink.jpg", "img/9/3/pink.jpg"],
+                "purple":["img/9/1/purple.jpg", "img/9/2/purple.jpg", "img/9/3/purple.jpg"],
+                "white":["img/9/1/white.jpg", "img/9/2/white.jpg", "img/9/3/white.jpg"]
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
@@ -188,9 +188,9 @@
             "colors":["grey", "black","white"],
             "device": "mac",
             "images":{
-                "black":["img/10/1_black.jpg"],
-                "white":["img/10/1_white.jpg"],
-                "grey":["img/10/1_grey.jpg"]
+                "black":["img/10/1/black.jpg"],
+                "white":["img/10/1/white.jpg"],
+                "grey":["img/10/1/grey.jpg"]
             },
             "currency":"USD",
             "storage":["256GB","512GB"],
@@ -206,7 +206,7 @@
             "colors":["grey"],
             "device": "mac",
             "images":{
-                "grey":["img/11/1_grey.jpg"]    
+                "grey":["img/11/1/grey.jpg"]    
             }, 
             "currency":"USD",
             "storage":["1TB","2TB","4TB","8TB"],
@@ -223,13 +223,13 @@
             "colors":["grey","blue","green","pink","yellow","orange","purple"],
             "device": "mac",
             "images":{
-                "blue":["img/12/1_blue.jpg", "img/12/2_blue.jpg"],
-                "green":["img/12/1_green.jpg", "img/12/2_green.jpg"],
-                "pink":["img/12/1_pink.jpg", "img/12/2_pink.jpg"],
-                "grey":["img/12/1_grey.jpg", "img/12/2_grey.jpg"],
-                "yellow":["img/12/1_yellow.jpg", "img/12/2_yellow.jpg"],
-                "orange":["img/12/1_orange.jpg", "img/12/2_orange.jpg"],
-                "purple":["img/12/1_purple.jpg", "img/12/2_purple.jpg"]
+                "blue":["img/12/1/blue.jpg", "img/12/2/blue.jpg"],
+                "green":["img/12/1/green.jpg", "img/12/2/green.jpg"],
+                "pink":["img/12/1/pink.jpg", "img/12/2/pink.jpg"],
+                "grey":["img/12/1/grey.jpg", "img/12/2/grey.jpg"],
+                "yellow":["img/12/1/yellow.jpg", "img/12/2/yellow.jpg"],
+                "orange":["img/12/1/orange.jpg", "img/12/2/orange.jpg"],
+                "purple":["img/12/1/purple.jpg", "img/12/2/purple.jpg"]
             },
             "currency":"USD",
             "storage":["512GB","1TB","2TB"],
@@ -246,7 +246,7 @@
             "colors":["grey"],
             "device": "mac",
             "images":{
-                "grey":["img/13/1_grey.jpg"]
+                "grey":["img/13/1/grey.jpg"]
             },
             "currency":"USD",
             "storage":["512GB","1TB","2TB","4TB","8TB"],
@@ -262,7 +262,7 @@
             "colors":["grey"],
             "device": "mac",
             "images":{
-                "grey":["img/14/1_grey.jpg"]
+                "grey":["img/14/1/grey.jpg"]
             },
             "currency":"USD",
             "storage":["1TB","2TB","4TB","8TB"],
@@ -278,7 +278,7 @@
             "colors":["grey"],
             "device": "mac",
             "images":{
-                "grey":["img/15/1_grey.jpg"]
+                "grey":["img/15/1/grey.jpg"]
             },
             "currency":"USD",
             "storage":["512GB","1TB","2TB","4TB","8TB"],
