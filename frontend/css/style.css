@@ -9,89 +9,6 @@ body {
     font-family: 'SF Pro Text', sans-serif;
 }
 
-button {
-    background: rgba(0, 113, 227, 1);
-    color: #fff;
-    border: none;
-    border-radius: 980px;
-    height: fit-content;
-    font-size: 20px;
-    padding: 8px 16px;
-    font-family: 'SF Pro Text', sans-serif;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgb(0, 119, 237);
-    transform: translateY(-1px);
-}
-
-button:active {
-    background: rgb(0, 110, 219);
-    transform: translateY(1px);
-}
-
-.blue { background-color: #00f; color: #fff; }
-.red { background-color: #f00; color: #fff; }
-.green { background-color: #0f0; color: #fff; }
-.yellow { background-color: #ff0; color: #000; }
-.purple { background-color: purple; color: #fff; }
-.orange { background-color: #f90; color: #fff; }
-.pink { background-color: #f0f; color: #fff; }
-.grey { background-color: #ccc; color: #000; }
-.white { background-color: #fff; color: #000; }
-.black { background-color: #000; color: #fff; }
-
-.device-selector > input {
-    display: none;
-}
-
-.device-selector > label {
-    width: 50px;
-    height: 50px;
-    padding: 0 10px;
-    cursor: pointer;
-}
-
-.device-selector > label:hover {
-    opacity: 0.7;
-}
-
-.device-selector > input:checked + label {
-    border-bottom: 3px solid;
-    border-image: linear-gradient(to right, #fff 10%, #007AFF 30%, #007AFF 70%, #fff 90%) 1;
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 334px;
-    gap: 10px;
-}
-
-.items-ctn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100vw;
-    gap: 20px;
-    margin: 20px 0;
-    background-color: #f5f5f7;
-}
-
-.item-img {
-    height: 200px;
-    display: none;
-}
-
-.item-img.active {
-    display: block;
-}
-
-
-
 /* Header */
 header {
     background-color: #fff;
@@ -127,21 +44,6 @@ header .logo  img {
 }
 /* End Header */
 
-/* Footer */
-footer {
-    background-color: #f5f5f7;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 50px;
-    padding: 0 100px;
-}
-
-footer a {
-    color: #111111;
-    text-decoration: none;
-}
-/* End Footer */
 
 
 /* selector*/
@@ -159,6 +61,115 @@ footer a {
   font-size: 20px;
   font-weight: 100;
   cursor: pointer;
-  
+
+}
+
+.blue { background-color: #00f; color: #fff; }
+.red { background-color: #f00; color: #fff; }
+.green { background-color: #0f0; color: #fff; }
+.yellow { background-color: #ff0; color: #000; }
+.purple { background-color: purple; color: #fff; }
+.orange { background-color: #f90; color: #fff; }
+.pink { background-color: #f0f; color: #fff; }
+.grey { background-color: #ccc; color: #000; }
+.white { background-color: #fff; color: #000; }
+.black { background-color: #000; color: #fff; }
+
+.device-selector > input {
+    display: none;
+}
+
+.device-selector > label {
+    width: 50px;
+    height: 50px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.device-selector > label:hover {
+    opacity: 0.7;
+}
+
+.device-selector > input:checked + label {
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, #fff 10%, #007AFF 30%, #007AFF 70%, #fff 90%) 1;
 }
 /*End Selector*/
+
+/* general style */
+button {
+    background: rgba(0, 113, 227, 1);
+    color: #fff;
+    border: none;
+    border-radius: 980px;
+    height: fit-content;
+    font-size: 20px;
+    padding: 8px 16px;
+    font-family: 'SF Pro Text', sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(0, 119, 237);
+    transform: translateY(-1px);
+}
+
+button:active {
+    background: rgb(0, 110, 219);
+    transform: translateY(1px);
+}
+
+/* End general style */
+
+
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 334px;
+    gap: 10px;
+}
+
+.items-ctn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    gap: 20px;
+    margin: 20px 0;
+    background-color: #f5f5f7;
+}
+
+.item-img {
+    height: 200px;
+    display: none;
+}
+
+.item-img.active {
+    display: block;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #f5f5f7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    padding: 0 100px;
+}
+
+footer a {
+    color: #111111;
+    text-decoration: none;
+}
+/* End Footer */
+
+
+

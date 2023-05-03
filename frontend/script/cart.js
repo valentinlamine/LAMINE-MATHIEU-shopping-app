@@ -10,11 +10,11 @@ cartIcon.addEventListener("click", OpenCart);
 function OpenCart() {
     cartCtn.classList.toggle("open-cart");
     if (cartCtn.classList.contains("open-cart")) {
-        cartIcon.src = "close.png";
+        cartIcon.src = "img/other/close.png";
         document.querySelector("html").style.overflow = "hidden";
         document.querySelector(".cart-blur").style.display = "block";
     } else {
-        cartIcon.src = "cart.png";
+        cartIcon.src = "img/other/cart.png";
         document.querySelector("html").style.overflow = "auto";
         document.querySelector(".cart-blur").style.display = "none";
     }

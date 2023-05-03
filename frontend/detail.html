@@ -4,42 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/cart.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <div class="logo">
-               <img src="/frontend/img/logo/apple-logo.svg" alt="logo apple">
+            <a href="index.html">
+                <img src="img/logo/apple-logo.svg" alt="logo apple">
+            </a>
         </div>
-        <nav>
-            <button id="all-Btn">All</button>
-            <button id="iPhone-Btn">iPhone</button>
-            <button id="iPad-Btn">iPad</button>
-            <button id="Mac-Btn">Mac</button>
+        <nav class="nav-bar device-selector">
+            <input type="radio" name="device" id="device-all" value="all" checked>
+            <label for="device-all">All Device</label>
+            <input type="radio" name="device" id="device-iphone" value="iphone">
+            <label for="device-iphone">iPhone</label>
+            <input type="radio" name="device" id="device-ipad" value="ipad">
+            <label for="device-ipad">iPad</label>
+            <input type="radio" name="device" id="device-mac" value="mac">
+            <label for="device-mac">Mac</label>
+            <a href="detail.html" style="position: absolute; top:0; left: 0">Detail</a>
         </nav>
     </header>
     <content>
-    <img class="cart-icon" src="cart.png" alt="">
-    <div class="cart-ctn">
-    </div>
-    <div id="carousel-detail">
-        <ol id="carousel__viewport">
-        </ol>
-    </div>
-    <div id="items-detail">
-        <button id="btn-detail">afficher plus</button>
-    </div>
-    <div id="price-detail">
-        <button class="add">ajouter au panier</button>
-    </div>
+        <img class="cart-icon" src="img/other/cart.png" alt="">
+        <div class="cart-ctn">
+        </div>
+        <div id="carousel-detail">
+            <ol id="carousel__viewport">
+            </ol>
+        </div>
+        <div id="items-detail">
+            <button id="btn-detail">afficher plus</button>
+        </div>
+        <div id="price-detail">
+            <button class="add">ajouter au panier</button>
+        </div>
     </content>
     <footer>
         <p>© 2023 - Projet Boutique en ligne</p>
         <p>Créé par <a href="https://github.com/valentinlamine">Valentin LAMINE</a> et <a href="https://github.com/PhilippeMath49">Philippe MATHIEU</a></p>
     </footer>
-    <script src="detail.js"></script>
-    <script src="cart.js"></script>
+    <script src="script/detail.js"></script>
+    <script src="script/cart.js"></script>
 </body>
 </html>
