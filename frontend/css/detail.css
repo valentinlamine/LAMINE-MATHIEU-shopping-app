@@ -6,3 +6,24 @@
     display: flex;
     justify-content: center;
 }
+.item-images{
+    max-width: 50%;
+    max-height:50vw;
+    display: flex;
+}
+.main-image{
+    max-height: 100%;
+}
+.main-image img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.image-list img{
+    max-width: 20%;
+    max-height: 100%;
+}
+
+.image-list{
+    
+}

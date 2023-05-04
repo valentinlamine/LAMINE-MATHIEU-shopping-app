@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/load.css">
     <title>How To Sell Online</title>
 </head>
 <body>
@@ -17,48 +18,74 @@
             </a>
         </div>
         <nav class="nav-bar device-selector">
-            <input type="radio" name="device" id="device-all" value="all" checked>
+            <input type="checkbox" name="device" id="device-all" value="all" checked>
             <label for="device-all">All Device</label>
-            <input type="radio" name="device" id="device-iphone" value="iphone">
+            <input type="checkbox" name="device" id="device-iphone" value="iphone">
             <label for="device-iphone">iPhone</label>
-            <input type="radio" name="device" id="device-ipad" value="ipad">
+            <input type="checkbox" name="device" id="device-ipad" value="ipad">
             <label for="device-ipad">iPad</label>
-            <input type="radio" name="device" id="device-mac" value="mac">
+            <input type="checkbox" name="device" id="device-mac" value="mac">
             <label for="device-mac">Mac</label>
-            <a href="detail.html" style="position: absolute; top:0; left: 0">Detail</a>
         </nav>
     </header>
-    <content>
+    <div class="content">
         <img class="cart-icon" src="img/other/cart.png" alt="cart icon">
         <span class="cart-blur"></span>
         <div class="cart-ctn">
         </div>
 
         <div id="selector">
-            <label for="color-selector" style="display: none"></label>
-            <select class="color-selector" name="color" id="color-selector">
-                <option value="all">All colors</option>
-                <option class="black" value="black">Black</option>
-                <option class="grey" value="grey">Grey</option>
-                <option class="white" value="white">White</option>
-                <option class="pink" value="pink">Pink</option>
-                <option class="red" value="red">Red</option>
-                <option class="orange" value="orange">Orange</option>
-                <option class="yellow" value="yellow">Yellow</option>
-                <option class="green" value="green">Green</option>
-                <option class="blue" value="blue">Blue</option>
-                <option class="purple" value="purple">Purple</option>
-            </select>
+            <div class="color-selector">
+                <input type="checkbox" name="color" id="color-all" value="all" checked>
+                <label for="color-all" class="color-picker all">All</label>
+
+                <input type="checkbox" name="color" id="color-black" value="black">
+                <label for="color-black" class="color-picker black"> </label>
+
+                <input type="checkbox" name="color" id="color-grey" value="grey">
+                <label for="color-grey" class="color-picker grey"> </label>
+
+                <input type="checkbox" name="color" id="color-white" value="white">
+                <label for="color-white" class="color-picker white"> </label>
+
+                <input type="checkbox" name="color" id="color-pink" value="pink">
+                <label for="color-pink" class="color-picker pink"> </label>
+
+                <input type="checkbox" name="color" id="color-red" value="red">
+                <label for="color-red" class="color-picker red"> </label>
+
+                <input type="checkbox" name="color" id="color-orange" value="orange">
+                <label for="color-orange" class="color-picker orange"> </label>
+
+                <input type="checkbox" name="color" id="color-yellow" value="yellow">
+                <label for="color-yellow" class="color-picker yellow"> </label>
+
+                <input type="checkbox" name="color" id="color-green" value="green">
+                <label for="color-green" class="color-picker green"> </label>
+
+                <input type="checkbox" name="color" id="color-blue" value="blue">
+                <label for="color-blue" class="color-picker blue"> </label>
+
+                <input type="checkbox" name="color" id="color-purple" value="purple">
+                <label for="color-purple" class="color-picker purple"> </label>
+            </div>
             <div id="selector-buttons">
                 <button class="ascendant-price-btn">Sort by ascendant price</button>
                 <button class="descendent-price-btn">Sort by descendent price</button>
             </div>
         </div>
 
+
         <div class="items-ctn">
 
         </div>
-    </content>
+        <div class="loader">
+          <div class="loader-wheel"></div>
+        </div>
+        <script>
+
+        </script>
+    </div>
     <footer>
         <p>© 2023 - Projet Boutique en ligne</p>
         <p>Créé par <a href="https://github.com/valentinlamine">Valentin LAMINE</a> et <a href="https://github.com/PhilippeMath49">Philippe MATHIEU</a></p>

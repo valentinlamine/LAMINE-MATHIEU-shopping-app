@@ -13,7 +13,7 @@ let items;
 let filteredItems;
 
 // Event Listeners
-document.querySelector("#color-selector").addEventListener("change", GetSelectedValue);
+document.querySelector(".color-selector").addEventListener("change", GetSelectedValue);
 document.querySelector(".device-selector").addEventListener("change", GetSelectedValue);
 ascendantPriceBtn.addEventListener("click", sortByAscendantPrice);
 descendentPriceBtn.addEventListener("click", sortByDescendantPrice);
@@ -25,24 +25,94 @@ document.addEventListener("change", function(e) {
     }
 });
 
+//Loading page
+document.querySelector(".items-ctn").style.display = "none";
+document.querySelector(".loader").style.display = "flex";
+window.addEventListener("load", function(){
+    document.querySelector(".items-ctn").style.display = "flex";
+    document.querySelector(".loader").style.display = "none";
+});
+
+
 // Functions
 function GetSelectedValue() {
-    let selectedColor = document.querySelector("#color-selector option:checked").value;
-    let selectedDevice = document.querySelector(".device-selector input:checked").value;
+    let selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    let selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
+    //Si aucun input n'est sélectionné, on coche le bouton "all"
+    if (selectedColorInput.length === 0) {
+        document.querySelector(".color-selector input[value='all']").checked = true;
+    }
+    if (selectedDeviceInput.length === 0) {
+        document.querySelector(".device-selector input[value='all']").checked = true;
+    }
+    //Si un input autre que "all" est sélectionné, on décoche le bouton "all"
+    if (selectedColorInput.length > 0) {
+        for (let i = 0; i < selectedColorInput.length; i++) {
+            if (selectedColorInput[i].value !== "all") {
+                document.querySelector(".color-selector input[value='all']").checked = false;
+            }
+        }
+    }
+    if (selectedDeviceInput.length > 0) {
+        for (let i = 0; i < selectedDeviceInput.length; i++) {
+            if (selectedDeviceInput[i].value !== "all") {
+                document.querySelector(".device-selector input[value='all']").checked = false;
+            }
+        }
+    }
+    //On récupère les valeurs des inputs sélectionnés
+    selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
+    let selectedColor = [];
+    let selectedDevice = [];
+    for (let i = 0; i < selectedColorInput.length; i++) {
+        selectedColor[i] = selectedColorInput[i].value;
+    }
+    for (let i = 0; i < selectedDeviceInput.length; i++) {
+        selectedDevice[i] = selectedDeviceInput[i].value;
+    }
     filterItems(selectedColor, selectedDevice);
 }
 
-function filterItems(color, device) {
-    if (color === "all" && device === "all") {
+function filterItems(colors, devices) {
+    filteredItems = [];
+    if (colors[0] === "all" && devices[0] === "all") {
         filteredItems = items;
-    } else if (color === "all") {
-        filteredItems = items.filter(item => item.device === device);
-    } else if (device === "all") {
-        filteredItems = items.filter(item => item.colors.includes(color));
+    } else if (colors[0] === "all") {
+        for (let i = 0; i < items.length; i++) {
+            for (let j = 0; j < devices.length; j++) {
+                if (items[i].device === devices[j]) {
+                    filteredItems.push(items[i]);
+                }
+            }
+        }
+    } else if (devices[0] === "all") {
+        for (let i = 0; i < items.length; i++) {
+            for (let j = 0; j < colors.length; j++) {
+                if (items[i].colors.includes(colors[j])) {
+                    filteredItems.push(items[i]);
+                }
+            }
+        }
     } else {
-        filteredItems = items.filter(item => item.device === device && item.colors.includes(color));
+        for (let i = 0; i < items.length; i++) {
+            for (let j=0; j < devices.length; j++) {
+                if (items[i].device === devices[j]) {
+                    for (let k = 0; k < colors.length; k++) {
+                        if (items[i].colors.includes(colors[k])) {
+                            filteredItems.push(items[i]);
+                        }
+                    }
+                }
+            }
+        }
     }
-    DisplayItemsCards(color);
+    filteredItems = filteredItems.filter((item, index, self) =>
+        index === self.findIndex((t) => (
+            t.id === item.id
+        ))
+    )
+    DisplayItemsCards(colors);
 }
 
 function GetItemsFromAPI() {
@@ -57,7 +127,14 @@ function GetItemsFromAPI() {
         }
         )
         .catch(error => {
-            console.log(error);
+            document.querySelector(".items-ctn").innerHTML = `
+            <h1>Please start the Backend server for display the items</h1>
+            <h2>Go to the backend folder and run the command "npm start"</h2>
+            <h2>Then <a href="index.html">refresh the page</a></h2>
+            `;
+            document.querySelector(".items-ctn").style.display = "flex";
+            document.querySelector(".items-ctn").style.flexDirection = "column";
+            document.querySelector(".items-ctn").style.justifyContent = "center";
         }
         )
 }
@@ -95,59 +172,77 @@ function FoundItemStorage(btn, id, color) {
     }
 }
 
-function DisplayItemsCards(color) {
+function DisplayItemsCards(colors) {
     card_container.innerHTML = "";
     filteredItems.forEach(item => {
-        if (!item.colors.includes(color)) {
-            color = item.colors[0];
+        item.common_colors = item.colors.filter(color => colors.includes(color));
+        if (item.common_colors.length === 0) {
+            item.common_colors.push(item.colors[0]);
         }
-        let itemCtn = document.createElement("div");
-        itemCtn.classList.add("item");
+        item.common_colors.forEach(color => {
+            let itemCtn = document.createElement("div");
+            itemCtn.classList.add("item");
 
-        //Génération de la partie gauche
-        let HTMLContent = `<div class="left">`;
-        if (item.images[color].length > 1) {HTMLContent += `
-            <a onclick="PreviousImage(this.nextElementSibling.nextElementSibling)"><img class="left-img" src="img/other/left.svg"></a>
-            <a onclick="NextImage(this.nextElementSibling)"><img class="right-img" src="img/other/right.svg"></a>`;}
-        HTMLContent += `<div class="item-imgs">`;
-        for (let i = 0; i < item.images[color].length; i++) {
-            if (item.device !== "mac") {
-                if (i === 0) {HTMLContent += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
-                } else {HTMLContent += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;}
-            } else {
-                if (i === 0) {HTMLContent += `<img class="item-img mac active" src="${item.images[color][i]}" alt="${item.name}">`;
-                } else {HTMLContent += `<img class="item-img mac" src="${item.images[color][i]}" alt="${item.name}" style="display: none;">`;}}}
-        HTMLContent += `</div></div>`;
+            //Génération de la partie gauche
+            let HTMLContent = `<div class="left">`;
+            if (item.images[color].length > 1) {
+                HTMLContent += `
+                <a onclick="PreviousImage(this.nextElementSibling.nextElementSibling)"><img class="left-img" src="img/other/left.svg"></a>
+                <a onclick="NextImage(this.nextElementSibling)"><img class="right-img" src="img/other/right.svg"></a>`;
+            }
+            HTMLContent += `<div class="item-imgs">`;
+            for (let i = 0; i < item.images[color].length; i++) {
+                if (item.device !== "mac") {
+                    if (i === 0) {
+                        HTMLContent += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
+                    } else {
+                        HTMLContent += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;
+                    }
+                } else {
+                    if (i === 0) {
+                        HTMLContent += `<img class="item-img mac active" src="${item.images[color][i]}" alt="${item.name}">`;
+                    } else {
+                        HTMLContent += `<img class="item-img mac" src="${item.images[color][i]}" alt="${item.name}">`;
+                    }
+                }
+            }
+            HTMLContent += `</div></div>`;
 
-        //Génération de la partie droite
-        HTMLContent += `<div class="right">
-            <div class="first-group">`;
+            //Génération de la partie droite
+            HTMLContent += `<div class="right">
+                <div class="first-group">`;
             if (item.reduction > 0) {
                 HTMLContent += `<div class="item-name"><span class="title">${item.name}</span><span class="reduction">-${item.reduction}%</span></div>
-                <div class="item-price">À Partir de <span class="old-price">${item.price[0]} €</span><span class="new-price"> ${item.price[0] - (item.price[0] * item.reduction / 100)} €</span></div>`;
+                    <div class="item-price">À Partir de <span class="old price">${Math.trunc(item.price[0])} €</span><span class="new price">${Math.trunc(item.price[0] - (item.price[0] * item.reduction / 100))} €</span></div>`;
             } else {
                 HTMLContent += `<div class="item-name"><span class="title">${item.name}</span></div>
-                <div class="item-price">À Partir de ${item.price[0]} €</div>`;
+                    <div class="item-price">À Partir de <span class="price">${Math.trunc(item.price[0])} €</span></div>`;
             }
-        HTMLContent += `
-            </div>
-            <div class="second-group">
-                <select class="item color-selector" name="color">`;
-                item.colors.forEach(colorItem => {
-                    if (colorItem === color) {HTMLContent += `<option value="${colorItem}" selected>${colorItem}</option>`;}
+            HTMLContent += `
+                </div>
+                <div class="second-group">
+                    <select class="item color-selector" name="color">`;
+            item.colors.forEach(colorItem => {
+                if (colorItem === color) {
+                    HTMLContent += `<option value="${colorItem}" selected>${colorItem}</option>`;
+                } else {
                     HTMLContent += `<option value="${colorItem}">${colorItem}</option>`;
-                });
-        HTMLContent += `</select>
-            <select class="storage-selector" name="storage">
-                <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
-                item.storage.forEach(storage => {HTMLContent += `<option value="${storage}">${storage}</option>`;})
-        HTMLContent += `</select></div>
-            <div class="third-group">
-                <button onclick="details(${item.id}, '${color}')">Voir fiche produit</button>
-                <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
-            </div></div>`;
-        itemCtn.innerHTML += HTMLContent;
-        card_container.appendChild(itemCtn);
+                }
+            });
+            HTMLContent += `</select>
+                <select class="storage-selector" name="storage">
+                    <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
+            item.storage.forEach(storage => {
+                HTMLContent += `<option value="${storage}">${storage}</option>`;
+            })
+            HTMLContent += `</select></div>
+                <div class="third-group">
+                    <button onclick="details(${item.id}, '${color}')">Voir fiche produit</button>
+                    <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
+                </div></div>`;
+            itemCtn.innerHTML += HTMLContent;
+            card_container.appendChild(itemCtn);
+        });
     });
 }
 
@@ -164,12 +259,22 @@ function UpdateColor(selector, color) {
 
 function sortByAscendantPrice() {
     filteredItems.sort((a, b) => a.price[0] - b.price[0]);
-    DisplayItemsCards();
+    let selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    let selectedColor = [];
+    for (let i = 0; i < selectedColorInput.length; i++) {
+        selectedColor[i] = selectedColorInput[i].value;
+    }
+    DisplayItemsCards(selectedColor);
 }
 
 function sortByDescendantPrice() {
     filteredItems.sort((a, b) => b.price[0] - a.price[0]);
-    DisplayItemsCards();
+    let selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    let selectedColor = [];
+    for (let i = 0; i < selectedColorInput.length; i++) {
+        selectedColor[i] = selectedColorInput[i].value;
+    }
+    DisplayItemsCards(selectedColor);
 }
 
 function NextImage(img_ctn) {
