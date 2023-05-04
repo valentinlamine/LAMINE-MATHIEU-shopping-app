@@ -123,7 +123,12 @@ function DisplayCartItems() {
 function FindPrice(item, capacity) {
     for (let i = 0; i < item.storage.length; i++) {
         if (item.storage[i] === capacity) {
-            return item.price[i];
+            if (item.reduction === 0) {
+                return item.price[i];
+            } else {
+                //arrondi au centieme
+                return Math.round(item.price[i] * (1 - item.reduction / 100) * 100) / 100;
+            }
         }
     }
 }

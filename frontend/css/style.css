@@ -200,8 +200,27 @@ button:active {
 }
 
 .item .right .first-group .item-name {
-    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item .right .first-group .item-name span.title {
+    font-size: 22px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item .right .first-group .item-name span.reduction {
+    font-weight: 100;
+    margin-left: 10px;
+    font-size: 22px;
+    background-color: #c93535;
+    color: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
 }
 
 .item .right .first-group .item-price {

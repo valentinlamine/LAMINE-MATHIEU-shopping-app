@@ -121,12 +121,22 @@ function DisplayItemsCards(color) {
 
         //Génération de la partie droite
         HTMLContent += `<div class="right">
-            <div class="first-group">
-                <div class="item-name">${item.name}</div>
-                <div class="item-price">À Partir de ${item.price[0]} €</div></div>
+            <div class="first-group">`;
+            if (item.reduction > 0) {
+                HTMLContent += `<div class="item-name"><span class="title">${item.name}</span><span class="reduction">-${item.reduction}%</span></div>
+                <div class="item-price">À Partir de <span class="old-price">${item.price[0]} €</span><span class="new-price"> ${item.price[0] - (item.price[0] * item.reduction / 100)} €</span></div>`;
+            } else {
+                HTMLContent += `<div class="item-name"><span class="title">${item.name}</span></div>
+                <div class="item-price">À Partir de ${item.price[0]} €</div>`;
+            }
+        HTMLContent += `
+            </div>
             <div class="second-group">
                 <select class="item color-selector" name="color">`;
-                item.colors.forEach(color => {HTMLContent += `<option value="${color}">${color}</option>`;});
+                item.colors.forEach(colorItem => {
+                    if (colorItem === color) {HTMLContent += `<option value="${colorItem}" selected>${colorItem}</option>`;}
+                    HTMLContent += `<option value="${colorItem}">${colorItem}</option>`;
+                });
         HTMLContent += `</select>
             <select class="storage-selector" name="storage">
                 <option value="none" selected disabled hidden>Choisissez une capacité</option>`;
@@ -142,11 +152,14 @@ function DisplayItemsCards(color) {
 }
 
 function UpdateColor(selector, color) {
+    let id;
     selector.querySelectorAll(".left .item-imgs .item-img").forEach(img => {
         let img_splited = img.src.split("/");
+        id = img_splited[img_splited.length - 3];
         img_splited[img_splited.length - 1] = color + ".jpg";
         img.src = img_splited.join("/");
     });
+    selector.querySelector(".right .third-group button:nth-child(2)").setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
 }
 
 function sortByAscendantPrice() {

@@ -3,28 +3,27 @@ const port = 3000;
 const ip_add = "localhost"
 const url = "http://" + ip_add + ":" + port;
 
-let itemDetails;
+let LocalStorage;
 let item;
 
 const itemImages= document.querySelector(".item-images");
-const itemText= document.querySelector("items-detail"); 
+const itemText= document.querySelector("items-detail");
 
 StartingFunc();
 
 function StartingFunc() {
-    itemDetails = localStorage.getItem("details");
-    //example : {"id":1,"color":"black"}
-    if (itemDetails === null) {
-        window.location.href = "index.html";
+    LocalStorage = localStorage.getItem("details");
+    if (LocalStorage === null) {
+        window.location.href = "index.html"; //afficher le rick rolled ici
     }
-    itemDetails = JSON.parse(itemDetails);
-    console.log(itemDetails.id);
+    LocalStorage = JSON.parse(LocalStorage);
+    console.log(LocalStorage.id);
     GetItemDetailsFromAPI();
 }
 
 
 function GetItemDetailsFromAPI() {
-    fetch(url + "/item/" + itemDetails.id)
+    fetch(url + "/item/" + LocalStorage.id)
         .then(response => response.json())
         .then(data => {
             item = data.item;

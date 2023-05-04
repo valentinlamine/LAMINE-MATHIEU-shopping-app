@@ -14,7 +14,7 @@
             },
             "currency": "USD",
             "storage": ["64GB", "128GB", "256GB"],
-            "reduction": "0",
+            "reduction": "10",
             "description": "iPhone SE is the most powerful 4.7-inch iPhone ever. It features the A13 Bionic, the fastest chip in a smartphone, for incredible performance in apps, games, and photography. Portrait mode for studio-quality portraits and six lighting effects. Next-generation Smart HDR for incredible detail across highlights and shadows. And all the advanced features of iOS. It looks small. It acts big. iPhone SE. The powerful new iPhone SE.",
             "size": "4.7"
         },
@@ -56,7 +56,7 @@
             },
             "currency": "USD",
             "storage": ["128GB", "256GB", "512GB"],
-            "reduction": "0",
+            "reduction": "15",
             "description": "iPhone 13 is a new generation of iPhone. Featuring the Ceramic Shield front cover, the toughest glass in a smartphone. A15 Bionic, the fastest chip in a smartphone. An edge-to-edge OLED display. Ceramic Shield front cover. The toughest glass in a smartphone.",
             "size": "6.1"
         },
@@ -96,7 +96,7 @@
             },
             "currency": "USD",
             "storage": ["128GB", "256GB", "512GB", "1TB"],
-            "reduction": "0",
+            "reduction": "5",
             "description": "The iPhone 14 Pro is the ultimate smartphone for demanding users, with an ultra-smooth ProMotion OLED display, ultra-powerful processor and 12-megapixel Pro triple-lens rear camera. Packed with advanced security features and water and dust resistance, iPhone 14 Pro delivers an exceptional user experience with a sleek stainless steel and glass design.",
             "size": "6.7"
         }
@@ -135,7 +135,7 @@
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
-            "reduction":"0",
+            "reduction":"10",
             "description":"The iPad Air is a powerful and portable tablet from Apple, featuring a large high-resolution touchscreen, A14 Bionic chip, and support for Apple Pencil 2nd generation. It also offers Touch ID, 12MP rear and 7MP front cameras, and compatibility with a range of accessories such as the Magic Keyboard.",            
             "size":"10.86"
 
@@ -174,7 +174,7 @@
             },
             "currency":"USD",
             "storage": ["64GB","256GB"],
-            "reduction":"0",
+            "reduction":"8",
             "description":"The iPad mini is a compact and lightweight tablet from Apple, featuring a 7.9-inch high-resolution touchscreen and Apple's A15 Bionic chip for fast and smooth performance. It supports the 2nd generation Apple Pencil, Touch ID, and has an 8MP rear and 12MP front camera. It also offers compatibility with the Smart Keyboard Folio, making it a versatile device for productivity and entertainment on-the-go.",            
             "size":"8.3"
         }
@@ -233,7 +233,7 @@
             },
             "currency":"USD",
             "storage":["512GB","1TB","2TB"],
-            "reduction":"0",
+            "reduction":"7",
             "description":"The iMac is a line of all-in-one desktop computers designed and sold by Apple Inc. It features a high-resolution display, powerful processor, and advanced graphics capabilities, all contained within the same unit as the computer's other hardware components. The iMac is known for its sleek design and user-friendly interface, and is popular among professionals and consumers alike for its performance and ease of use.",
             "size":"24"
 
