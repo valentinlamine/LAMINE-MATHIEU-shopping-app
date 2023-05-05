@@ -1,3 +1,10 @@
+:root {
+  --borderWidth: 5px;
+  --height: 24px;
+  --width: 12px;
+  --borderColor: #78b13f;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -119,8 +126,10 @@ header .logo  img {
     border: 1px solid #aaa;
 }
 
-.color-selector > input:checked + .color-picker {
-    border: 2px solid #000;
+.color-selector > input:checked + .color-picker > .check {
+    display: inline-block;
+    position: absolute;
+    transform: rotate(45deg) translateY(0px) translateX(15px);
 }
 
 .device-selector > input , .color-selector > input  {
@@ -143,7 +152,39 @@ header .logo  img {
     border-image: linear-gradient(to right, #f5f5f7 10%, #007AFF 30%, #007AFF 70%, #f5f5f7 90%) 1;
 }
 
+.storage-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #007AFF;
+    border-radius: 20px;
+    padding: 0 10px;
+    height: 40px;
+}
 
+.storage-selector > input {
+    display: none;
+}
+
+.storage-selector > label {
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.storage-selector > input:checked + label > .check {
+    display: inline-block;
+    position: absolute;
+}
+
+.check {
+    display: none;
+    transform: rotate(45deg) translateY(8px) translateX(1px);
+    height: var(--height);
+    width: var(--width);
+    border-bottom: var(--borderWidth) solid var(--borderColor);
+    border-right: var(--borderWidth) solid var(--borderColor);
+}
 /*End Selector*/
 
 /* general style */

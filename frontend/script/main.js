@@ -15,106 +15,24 @@ let filteredItems;
 // Event Listeners
 document.querySelector(".color-selector").addEventListener("change", GetSelectedValue);
 document.querySelector(".device-selector").addEventListener("change", GetSelectedValue);
+document.querySelector(".storage-selector").addEventListener("change", GetSelectedValue);
 ascendantPriceBtn.addEventListener("click", sortByAscendantPrice);
 descendentPriceBtn.addEventListener("click", sortByDescendantPrice);
-document.addEventListener("change", function(e) {
-    if (e.target.classList.contains("color-selector")) {
-        if (e.target.value !== "all") {
-            UpdateColor(e.target.parentElement.parentElement.parentElement, e.target.value);
-        }
-    }
-});
+document.addEventListener("change", function(e){DocumentEventChange(e);});
+window.addEventListener("load", function () {DisableLoadingPage();});
+
+
 
 //Loading page
 document.querySelector(".items-ctn").style.display = "none";
 document.querySelector(".loader").style.display = "flex";
-window.addEventListener("load", function(){
-    document.querySelector(".items-ctn").style.display = "flex";
-    document.querySelector(".loader").style.display = "none";
-});
+
+// Init API
+GetItemsFromAPI();
+
 
 
 // Functions
-function GetSelectedValue() {
-    let selectedColorInput = document.querySelectorAll(".color-selector input:checked");
-    let selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
-    //Si aucun input n'est sélectionné, on coche le bouton "all"
-    if (selectedColorInput.length === 0) {
-        document.querySelector(".color-selector input[value='all']").checked = true;
-    }
-    if (selectedDeviceInput.length === 0) {
-        document.querySelector(".device-selector input[value='all']").checked = true;
-    }
-    //Si un input autre que "all" est sélectionné, on décoche le bouton "all"
-    if (selectedColorInput.length > 0) {
-        for (let i = 0; i < selectedColorInput.length; i++) {
-            if (selectedColorInput[i].value !== "all") {
-                document.querySelector(".color-selector input[value='all']").checked = false;
-            }
-        }
-    }
-    if (selectedDeviceInput.length > 0) {
-        for (let i = 0; i < selectedDeviceInput.length; i++) {
-            if (selectedDeviceInput[i].value !== "all") {
-                document.querySelector(".device-selector input[value='all']").checked = false;
-            }
-        }
-    }
-    //On récupère les valeurs des inputs sélectionnés
-    selectedColorInput = document.querySelectorAll(".color-selector input:checked");
-    selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
-    let selectedColor = [];
-    let selectedDevice = [];
-    for (let i = 0; i < selectedColorInput.length; i++) {
-        selectedColor[i] = selectedColorInput[i].value;
-    }
-    for (let i = 0; i < selectedDeviceInput.length; i++) {
-        selectedDevice[i] = selectedDeviceInput[i].value;
-    }
-    filterItems(selectedColor, selectedDevice);
-}
-
-function filterItems(colors, devices) {
-    filteredItems = [];
-    if (colors[0] === "all" && devices[0] === "all") {
-        filteredItems = items;
-    } else if (colors[0] === "all") {
-        for (let i = 0; i < items.length; i++) {
-            for (let j = 0; j < devices.length; j++) {
-                if (items[i].device === devices[j]) {
-                    filteredItems.push(items[i]);
-                }
-            }
-        }
-    } else if (devices[0] === "all") {
-        for (let i = 0; i < items.length; i++) {
-            for (let j = 0; j < colors.length; j++) {
-                if (items[i].colors.includes(colors[j])) {
-                    filteredItems.push(items[i]);
-                }
-            }
-        }
-    } else {
-        for (let i = 0; i < items.length; i++) {
-            for (let j=0; j < devices.length; j++) {
-                if (items[i].device === devices[j]) {
-                    for (let k = 0; k < colors.length; k++) {
-                        if (items[i].colors.includes(colors[k])) {
-                            filteredItems.push(items[i]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    filteredItems = filteredItems.filter((item, index, self) =>
-        index === self.findIndex((t) => (
-            t.id === item.id
-        ))
-    )
-    DisplayItemsCards(colors);
-}
-
 function GetItemsFromAPI() {
     fetch(url + "/items")
         .then(response => {
@@ -139,37 +57,18 @@ function GetItemsFromAPI() {
         )
 }
 
-function FoundItemStorage(btn, id, color) {
-    let storage_input = btn.parentElement.previousElementSibling.querySelector(".storage-selector");
-    let storage = storage_input.options[storage_input.selectedIndex].value;
-    if (storage !== "none") {
-        btn.setAttribute("onclick", `addItemToCart(${id}, '${color}', '${storage}')`);
-        btn.click();
-        btn.setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
-        btn.innerHTML = "Ajouté au panier";
-        setTimeout(() => {
-            btn.innerHTML = "Ajouter au panier";
-        }, 2000);
-    } else {
-        storage_input.style.border = "1px solid red";
-        setTimeout(() => {
-            storage_input.style.border = "1px solid black";
-        }, 500);
-        //make vibrate the selector
-        storage_input.animate([
-            { transform: 'translateX(-2px)' },
-            { transform: 'translateX(2px)' },
-            { transform: 'translateX(-2px)' },
-            { transform: 'translateX(2px)' },
-            { transform: 'translateX(-2px)' },
-            { transform: 'translateX(2px)' },
-            { transform: 'translateX(-2px)' },
-            { transform: 'translateX(2px)' },
-        ], {
-            duration: 500,
-            iterations: 1
-        });
+function filterItems(colors, devices, storages) {
+    filteredItems = items;
+    if (colors[0] !== "all") {
+        filteredItems = filteredItems.filter(item => item.colors.some(color => colors.includes(color)));
     }
+    if (devices[0] !== "all") {
+        filteredItems = filteredItems.filter(item => devices.includes(item.device));
+    }
+    if (storages[0] !== "all") {
+        filteredItems = filteredItems.filter(item => item.storage.some(storage => storages.includes(storage)));
+    }
+    DisplayItemsCards(colors);
 }
 
 function DisplayItemsCards(colors) {
@@ -238,12 +137,24 @@ function DisplayItemsCards(colors) {
             HTMLContent += `</select></div>
                 <div class="third-group">
                     <button onclick="details(${item.id}, '${color}')">Voir fiche produit</button>
-                    <button onclick="FoundItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
+                    <button onclick="GetItemStorage(this, ${item.id}, '${color}')">Ajouter au panier</button>
                 </div></div>`;
             itemCtn.innerHTML += HTMLContent;
             card_container.appendChild(itemCtn);
         });
     });
+}
+
+
+
+//Event Listeners Functions
+function DocumentEventChange(e) {
+    console.log(e.target);
+    if (e.target.classList.contains("color-selector")) {
+        if (e.target.value !== "all") {
+            UpdateColor(e.target.parentElement.parentElement.parentElement, e.target.value);
+        }
+    }
 }
 
 function UpdateColor(selector, color) {
@@ -255,6 +166,66 @@ function UpdateColor(selector, color) {
         img.src = img_splited.join("/");
     });
     selector.querySelector(".right .third-group button:nth-child(2)").setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
+}
+
+function GetSelectedValue() {
+    let selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    let selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
+    let selectedStorageInput = document.querySelectorAll(".storage-selector input:checked");
+    //Si aucun input n'est sélectionné, on coche le bouton "all"
+    if (selectedColorInput.length === 0) {
+        document.querySelector(".color-selector input[value='all']").checked = true;
+    }
+    if (selectedDeviceInput.length === 0) {
+        document.querySelector(".device-selector input[value='all']").checked = true;
+    }
+    if (selectedStorageInput.length === 0) {
+        document.querySelector(".storage-selector input[value='all']").checked = true;
+    }
+    //Si un input autre que "all" est sélectionné, on décoche le bouton "all"
+    if (selectedColorInput.length > 0) {
+        for (let i = 0; i < selectedColorInput.length; i++) {
+            if (selectedColorInput[i].value !== "all") {
+                document.querySelector(".color-selector input[value='all']").checked = false;
+            }
+        }
+    }
+    if (selectedDeviceInput.length > 0) {
+        for (let i = 0; i < selectedDeviceInput.length; i++) {
+            if (selectedDeviceInput[i].value !== "all") {
+                document.querySelector(".device-selector input[value='all']").checked = false;
+            }
+        }
+    }
+    if (selectedStorageInput.length > 0) {
+        for (let i = 0; i < selectedStorageInput.length; i++) {
+            if (selectedStorageInput[i].value !== "all") {
+                document.querySelector(".storage-selector input[value='all']").checked = false;
+            }
+        }
+    }
+    //On récupère les valeurs des inputs sélectionnés
+    selectedColorInput = document.querySelectorAll(".color-selector input:checked");
+    selectedDeviceInput = document.querySelectorAll(".device-selector input:checked");
+    selectedStorageInput = document.querySelectorAll(".storage-selector input:checked");
+    let selectedColor = [];
+    let selectedDevice = [];
+    let selectedStorage = [];
+    for (let i = 0; i < selectedColorInput.length; i++) {
+        selectedColor[i] = selectedColorInput[i].value;
+    }
+    for (let i = 0; i < selectedDeviceInput.length; i++) {
+        selectedDevice[i] = selectedDeviceInput[i].value;
+    }
+    for (let i = 0; i < selectedStorageInput.length; i++) {
+        selectedStorage[i] = selectedStorageInput[i].value;
+    }
+    filterItems(selectedColor, selectedDevice, selectedStorage);
+}
+
+function DisableLoadingPage() {
+    document.querySelector(".items-ctn").style.display = "flex";
+    document.querySelector(".loader").style.display = "none";
 }
 
 function sortByAscendantPrice() {
@@ -275,6 +246,42 @@ function sortByDescendantPrice() {
         selectedColor[i] = selectedColorInput[i].value;
     }
     DisplayItemsCards(selectedColor);
+}
+
+
+
+//User click function
+function GetItemStorage(btn, id, color) {
+    let storage_input = btn.parentElement.previousElementSibling.querySelector(".storage-selector");
+    let storage = storage_input.options[storage_input.selectedIndex].value;
+    if (storage !== "none") {
+        btn.setAttribute("onclick", `addItemToCart(${id}, '${color}', '${storage}')`);
+        btn.click();
+        btn.setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
+        btn.innerHTML = "Ajouté au panier";
+        setTimeout(() => {
+            btn.innerHTML = "Ajouter au panier";
+        }, 2000);
+    } else {
+        storage_input.style.border = "1px solid red";
+        setTimeout(() => {
+            storage_input.style.border = "1px solid black";
+        }, 500);
+        //make vibrate the selector
+        storage_input.animate([
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+            { transform: 'translateX(-2px)' },
+            { transform: 'translateX(2px)' },
+        ], {
+            duration: 500,
+            iterations: 1
+        });
+    }
 }
 
 function NextImage(img_ctn) {
@@ -305,13 +312,8 @@ function PreviousImage(img_ctn) {
     }
 }
 
-//detail
-
 function details(id,color){
     const detail= { id, color};
     localStorage.setItem("details", JSON.stringify(detail));
     window.location.href= "detail.html";
 }
-
-// Init App
-GetItemsFromAPI();
