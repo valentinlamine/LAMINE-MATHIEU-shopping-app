@@ -1,11 +1,15 @@
 // Variables
 const cartIcon = document.querySelector(".cart-icon");
 const cartItems = document.querySelector(".cart-items");
+const cartBlur = document.querySelector(".cart-blur");
+const cartSummary = document.querySelector(".cart-summary");
 let itemCartList = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // Event Listeners
 cartIcon.addEventListener("click", OpenCart);
+cartBlur.addEventListener("click", OpenCart);
+
 
 EnableLoadingCart();
 
@@ -17,23 +21,42 @@ function EnableLoadingCart() {
 function DisableLoadingCart() {
     document.querySelector(".cart-ctn .cart-items").style.display = "flex";
     document.querySelector(".cart-ctn .loader-cart").style.display = "none";
+    CheckScroll();
 }
 
 // Functions
 function OpenCart() {
-    cartItems.parentElement.classList.toggle("open-cart");
-    if (cartItems.parentElement.classList.contains("open-cart")) {
-        cartIcon.src = "img/other/close.png";
+    if (cartItems.parentElement.classList.contains("open-cart") === false) {
+        cartItems.parentElement.classList.add("open-cart");
+        cartIcon.classList.add("fade");
+        setTimeout(() => {
+            cartIcon.classList.remove("fade");
+            cartIcon.src = "img/other/close.png";
+        }, 500);
         cartItems.parentElement.style.display = "flex";
-        //DisplayCartItems();
+        DisplayCartItems();
         document.querySelector("html").style.overflow = "hidden";
-        document.querySelector(".cart-blur").style.display = "block";
+        cartIcon.style.marginRight = "12px";
+        document.querySelector("html").style.paddingRight = "12px";
+        cartBlur.style.display = "block";
     } else {
-        cartIcon.src = "img/other/cart.png";
-        EnableLoadingCart();
-        cartItems.parentElement.style.display = "none";
-        document.querySelector("html").style.overflow = "auto";
-        document.querySelector(".cart-blur").style.display = "none";
+        cartItems.parentElement.classList.add("fadeout");
+        cartIcon.classList.add("fade");
+        setTimeout(() => {
+            cartItems.parentElement.classList.remove("open-cart");
+            EnableLoadingCart();
+            cartItems.parentElement.style.display = "none";
+            document.querySelector("html").style.overflow = "auto";
+            cartIcon.style.marginRight = "0px";
+            document.querySelector("html").style.paddingRight = "0px";
+            cartBlur.style.display = "none";
+        }, 500);
+        setTimeout(() => {
+            cartIcon.src = "img/other/cart.png";
+            cartIcon.classList.remove("fade");
+            cartItems.parentElement.classList.remove("fadeout");
+        }, 500);
+
     }
 }
 
@@ -109,27 +132,39 @@ function DisplayCartItems() {
         let cartItem = document.createElement("div");
         cartItem.classList.add("cart-item");
         cartItem.innerHTML = `
-            <img class="cart-item-img" src="img/low/${CartItem.item.images[CartItem.color][0]}" alt="${CartItem.item.name}">
-            <div>${CartItem.item.name} ${CartItem.capacity} ${CartItem.color}</div>
-            <div>${Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100} €</div>
-            <button onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">-</button>
-            <div>${CartItem.quantity}</div>
-            <button onclick="addOneItemToCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">+</button>
-            <button onclick="removeFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">Remove</button>
+            <div class="cart-item-img"><img src="img/low/${CartItem.item.images[CartItem.color][0]}" alt="${CartItem.item.name}"></div>
+            <div class="left"><div class="title-color">
+            <div class="color ${CartItem.color}"></div>
+            <div class="name">${CartItem.item.name}</div></div> 
+            <div class="capacity">${CartItem.capacity}</div> 
+            <div class="price">${Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100} €</div>
+            </div><div class="right">
+            <button class="quantity-button" onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">-</button>
+            <div class="quantity">${CartItem.quantity}</div>
+            <button class="quantity-button" onclick="addOneItemToCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">+</button>
+            <button class="remove-button" onclick="removeFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">Remove</button>
+            </div>
         `;
         cartItems.appendChild(cartItem);
     });
     if (total > 0) {
-        let cartLine = document.createElement("div");
-        cartLine.classList.add("cart-summary");
-        cartLine.innerHTML += `<div class="total-price">Total : ${Math.round(total * 100) / 100} €</div>`;
-
-        cartLine.innerHTML += `<button class="btn" onclick="ClearCart();">Clear Cart</button>`;
-        cartItems.appendChild(cartLine);
+        cartSummary.innerHTML = `<div class="total-price">Total : ${Math.round(total * 100) / 100} €</div>`;
+        cartSummary.innerHTML += `<button class="btn" onclick="ClearCart();">Clear Cart</button>`;
     }
     setTimeout(DisableLoadingCart, 100);
 }
 
+function CheckScroll() {
+    console.log(cartItems.scrollHeight);
+    console.log(cartItems.clientHeight);
+    if (cartItems.scrollHeight > cartItems.clientHeight) {
+        console.log("scroll");
+        cartItems.classList.add("scroll");
+    } else {
+        console.log("no scroll");
+        cartItems.classList.remove("scroll");
+    }
+}
 function PlaySound() {
     var sound = document.getElementById('sound2');
     sound.volume = 0.25;

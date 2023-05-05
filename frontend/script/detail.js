@@ -76,7 +76,7 @@ function IsChecked(){
 
 
 function changeMainImage(src){
-    document.querySelector("#main-image").src=src;
+    document.querySelector("#main-image").src = src;
 }
 
 document.addEventListener("change", function(e){DocumentEventChange(e)});
@@ -85,3 +85,4 @@ function DocumentEventChange(e) {
      IsChecked();
      console.log("test ok");
 }
+
