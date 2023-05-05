@@ -149,7 +149,6 @@ function DisplayItemsCards(colors) {
 
 //Event Listeners Functions
 function DocumentEventChange(e) {
-    console.log(e.target);
     if (e.target.classList.contains("color-selector")) {
         if (e.target.value !== "all") {
             UpdateColor(e.target.parentElement.parentElement.parentElement, e.target.value);

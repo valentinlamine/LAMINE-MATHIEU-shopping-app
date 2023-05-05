@@ -54,7 +54,7 @@ function DisplayImages(){
     imageList += `</form>`;
     let mainImage = document.createElement("div");
     mainImage.classList.add("main-image");
-    mainImage.innerHTML = `<img src="${item.images[`${item.colors[0]}`][0]}" alt="${item.name}">`;
+    mainImage.innerHTML = `<img id="main-image" src="${item.images[`${item.colors[0]}`][0]}" alt="${item.name}">`;
 
     itemImages.appendChild(mainImage);
     itemImages.innerHTML += imageList;
@@ -63,6 +63,19 @@ function DisplayImages(){
 function DisplayText(){
     itemText.innerHTML = item.description;
 }
+
+function IsChecked(){
+    let src=document.querySelector(".image-list input:checked").value;
+    changeMainImage(src)
+}
+
+const mainImage = document.querySelector("#main-image");
+
+function changeMainImage(src){
+    mainImage.src=src
+}
+
+document.querySelector(".image-list").addEventListener("change",IsChecked);
 
 
 
