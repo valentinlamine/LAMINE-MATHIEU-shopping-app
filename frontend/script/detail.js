@@ -1,6 +1,6 @@
 // Init API
 const port = 3000;
-const ip_add = "localhost"
+const ip_add = "25.11.144.33"
 const url = "http://" + ip_add + ":" + port;
 
 let Storage;
@@ -46,15 +46,15 @@ function DisplayImages(){
     let imageList = `<form class="image-list">\n`
     for (let i = 0; i < item.images[`${item.colors[0]}`].length; i++){
         if (i===0){
-            imageList += `<input type="radio" id="image${i}" value="${item.images[`${item.colors[0]}`][i]}" name="image"  checked><label for="image${i}"><img src="${item.images[`${item.colors[0]}`][i]}" alt="item image ${i}"></label>\n`;
+            imageList += `<input type="radio" id="image${i}" value="img/medium/${item.images[`${item.colors[0]}`][i]}" name="image"  checked><label for="image${i}"><img src="img/low/${item.images[`${item.colors[0]}`][i]}" alt="item image ${i}"></label>\n`;
         }else{
-            imageList += `<input type="radio" id="image${i}" value="${item.images[`${item.colors[0]}`][i]}" name="image"><label for="image${i}"><img src="${item.images[`${item.colors[0]}`][i]}" alt="item image ${i}"></label>\n`;
+            imageList += `<input type="radio" id="image${i}" value="img/medium/${item.images[`${item.colors[0]}`][i]}" name="image"><label for="image${i}"><img src="img/low/${item.images[`${item.colors[0]}`][i]}" alt="item image ${i}"></label>\n`;
         }
     }
     imageList += `</form>`;
     let mainImage = document.createElement("div");
     mainImage.classList.add("main-image");
-    mainImage.innerHTML = `<img id="main-image" src="${item.images[`${item.colors[0]}`][0]}" alt="${item.name}">`;
+    mainImage.innerHTML = `<img id="main-image" src="img/high/${item.images[`${item.colors[0]}`][0]}" alt="${item.name}">`;
 
     itemImages.appendChild(mainImage);
     itemImages.innerHTML += imageList;
@@ -66,16 +66,22 @@ function DisplayText(){
 
 function IsChecked(){
     let src=document.querySelector(".image-list input:checked").value;
-    changeMainImage(src)
+    console.log(src);
+    src = src.split("/");
+    src[1]="high";
+    src = src.join("/");
+    changeMainImage(src);
 }
 
-const mainImage = document.querySelector("#main-image");
+
 
 function changeMainImage(src){
-    mainImage.src=src
+    document.querySelector("#main-image").src=src;
 }
 
-document.querySelector(".image-list").addEventListener("change",IsChecked);
+document.addEventListener("change", function(e){DocumentEventChange(e)});
 
-
-
+function DocumentEventChange(e) {
+     IsChecked();
+     console.log("test ok");
+}

@@ -2,7 +2,7 @@
   --borderWidth: 5px;
   --height: 24px;
   --width: 12px;
-  --borderColor: #78b13f;
+  --borderColor: #007AFF;
 }
 
 * {
@@ -220,7 +220,6 @@ button:active {
 
 /* Items */
 .items-ctn {
-    display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;

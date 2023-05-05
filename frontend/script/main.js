@@ -1,6 +1,6 @@
 // Init API
 const port = 3000;
-const ip_add = "localhost"
+const ip_add = "25.11.144.33"
 const url = "http://" + ip_add + ":" + port;
 
 // Query Selectors
@@ -93,15 +93,15 @@ function DisplayItemsCards(colors) {
             for (let i = 0; i < item.images[color].length; i++) {
                 if (item.device !== "mac") {
                     if (i === 0) {
-                        HTMLContent += `<img class="item-img active" src="${item.images[color][i]}" alt="${item.name}">`;
+                        HTMLContent += `<img class="item-img active" src="img/medium/${item.images[color][i]}" alt="${item.name}">`;
                     } else {
-                        HTMLContent += `<img class="item-img" src="${item.images[color][i]}" alt="${item.name}">`;
+                        HTMLContent += `<img class="item-img" src="img/medium/${item.images[color][i]}" alt="${item.name}">`;
                     }
                 } else {
                     if (i === 0) {
-                        HTMLContent += `<img class="item-img mac active" src="${item.images[color][i]}" alt="${item.name}">`;
+                        HTMLContent += `<img class="item-img mac active" src="img/medium/${item.images[color][i]}" alt="${item.name}">`;
                     } else {
-                        HTMLContent += `<img class="item-img mac" src="${item.images[color][i]}" alt="${item.name}">`;
+                        HTMLContent += `<img class="item-img mac" src="img/medium/${item.images[color][i]}" alt="${item.name}">`;
                     }
                 }
             }
@@ -164,7 +164,7 @@ function UpdateColor(selector, color) {
         img_splited[img_splited.length - 1] = color + ".jpg";
         img.src = img_splited.join("/");
     });
-    selector.querySelector(".right .third-group button:nth-child(2)").setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
+    selector.querySelector(".right .third-group button:nth-child(2)").setAttribute("onclick", `GetItemStorage(this, ${id}, '${color}')`);
 }
 
 function GetSelectedValue() {
@@ -256,7 +256,7 @@ function GetItemStorage(btn, id, color) {
     if (storage !== "none") {
         btn.setAttribute("onclick", `addItemToCart(${id}, '${color}', '${storage}')`);
         btn.click();
-        btn.setAttribute("onclick", `FoundItemStorage(this, ${id}, '${color}')`);
+        btn.setAttribute("onclick", `GetItemStorage(this, ${id}, '${color}')`);
         btn.innerHTML = "Ajouté au panier";
         setTimeout(() => {
             btn.innerHTML = "Ajouter au panier";
