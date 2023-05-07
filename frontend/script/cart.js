@@ -82,7 +82,6 @@ function addItemToCart(id, color, capacity) {
     };
     itemCartList.push(CartItem);
     localStorage.setItem("cart", JSON.stringify(itemCartList));
-    console.log(itemCartList);
     DisplayCartItems();
 }
 
@@ -127,7 +126,6 @@ function ClearCart() {
 function DisplayCartItems() {
     cartItems.innerHTML = "";
     let total = 0;
-    console.log("reset total");
     itemCartList.forEach(CartItem => {
         total += Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100;
         let cartItem = document.createElement("div");
@@ -158,13 +156,9 @@ function DisplayCartItems() {
 }
 
 function CheckScroll() {
-    console.log(cartItems.scrollHeight);
-    console.log(cartItems.clientHeight);
     if (cartItems.scrollHeight > cartItems.clientHeight) {
-        console.log("scroll");
         cartItems.classList.add("scroll");
     } else {
-        console.log("no scroll");
         cartItems.classList.remove("scroll");
     }
 }
