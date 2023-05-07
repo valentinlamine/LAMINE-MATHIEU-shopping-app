@@ -127,6 +127,7 @@ function ClearCart() {
 function DisplayCartItems() {
     cartItems.innerHTML = "";
     let total = 0;
+    console.log("reset total");
     itemCartList.forEach(CartItem => {
         total += Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100;
         let cartItem = document.createElement("div");
@@ -150,6 +151,8 @@ function DisplayCartItems() {
     if (total > 0) {
         cartSummary.innerHTML = `<div class="total-price">Total : ${Math.round(total * 100) / 100} €</div>`;
         cartSummary.innerHTML += `<button class="btn" onclick="ClearCart();">Clear Cart</button>`;
+    } else {
+        cartSummary.innerHTML = `<div class="total-price">Your cart is empty</div>`;
     }
     setTimeout(DisableLoadingCart, 100);
 }
