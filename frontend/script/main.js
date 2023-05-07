@@ -1,6 +1,6 @@
 // Init API
 const port = 3000;
-const ip_add = "25.11.144.33"
+const ip_add = "localhost"
 const url = "http://" + ip_add + ":" + port;
 
 // Query Selectors

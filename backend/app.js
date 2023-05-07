@@ -6,7 +6,7 @@ const ItemsRoutes = require('./routes/main');
 //Create express app
 const app = express();
 const port = 3000;
-const ip_add = "25.11.144.33"
+const ip_add = "localhost"
 
 //Set up express app
 const cors = require('cors'); 
