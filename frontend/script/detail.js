@@ -10,6 +10,8 @@ const itemImages = document.querySelector(".item-images");
 const itemText = document.querySelector(".item-description");
 const text = document.querySelector(".item-description");
 const btnAfficher = document.querySelector("#btn-detail");
+const selector_container = document.querySelector(".selectors");
+
 
 let isDisplay= false;
 
@@ -42,6 +44,7 @@ function DisplayItemDetails() {
   document.querySelector(".title").innerHTML = item.name;
   DisplayText();
   DisplayImages();
+  displaySelector();
 }
 
 function DisplayImages() {
@@ -74,7 +77,7 @@ function DisplayImages() {
 }
 
 function DisplayText() {
-  itemText.innerHTML = item.description;
+  itemText.innerHTML = item.description.substring(0,150)+"...";
 }
 
 function IsChecked() {
@@ -91,18 +94,28 @@ function changeMainImage(src) {
 }
 
 function displayMore() {
+    let longText = item.description;
+    let shortText = longText.substring(0,150)+"...";
+
     if(!isDisplay){
         btnAfficher.innerHTML="";
         btnAfficher.innerHTML=`afficher moins`;
-        text.style.webkitLineClamp = "unset";
+        text.innerHTML="";
+        text.innerHTML=longText;
         isDisplay = true; 
     }else{
-        text.style.webkitLineClamp = "3";
+        text.innerHTML="";
+        text.innerHTML=shortText;
         btnAfficher.innerHTML="";
         btnAfficher.innerHTML=`afficher plus`;
         isDisplay = false;
     }
  
+}
+
+function displaySelector(){
+               
+    
 }
 
 document.addEventListener("DOMContentLoaded", () => {
