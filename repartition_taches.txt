@@ -1,0 +1,27 @@
+--BACKEND--
+- Création de la base de données : Philippe 
+- Création des assets de la base de données : Valentin
+- Base du serveur NodeJS Express : Phillpe & Valentin
+- Création des routes : Valentin
+- Création du rate limiter : Valentin
+- Finition du serveur Backend : Valentin
+- Finition de l'API : Valentin
+- Documentation de l'API : Valentin
+
+--FRONTEND--
+- Correction de BUG : Philippe & Valentin
+- Création de la page détails : Philippe 
+- Création du Header : Philippe
+- Création du footer : Philippe 
+- Création des cards : Philippe 
+- Création du design de la page index : Valentin
+- Redesign index et détail : Valentin
+- Création du README.MD : Philippe
+- Création du Système et design de panier : Valentin
+- Création du filtre de base : Philippe 
+- Amélioration en filtres multiples : Valentin 
+- Création formulaire unique carte : Valentin 
+- Système de tri unique : Philippe & Valentin
+- Système de tri multiple : Valentin
+- Système du panier (localstorage + fonctionnel) : Valentin
+- Système de redirection page details : Philippe 

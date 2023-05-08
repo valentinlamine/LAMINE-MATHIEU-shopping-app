@@ -18,40 +18,49 @@
             </a>
         </div>
     </header>
-    <h1 class="title"></h1>
-    <content>
-
-        
-
-        <img class="cart-icon" src="img/other/cart.png" alt="">
+    <div class="content">
+        <img class="cart-icon" src="img/other/cart.png" alt="cart icon">
+        <span class="cart-blur"></span>
         <div class="cart-ctn">
+            <div class="cart-title">
+                <div class="title">Cart</div>
+                <audio id="sound2" src="img/other/surprise.mp3" preload="auto"></audio>
+                <button onclick="PlaySound()">Order</button>
+            </div>
+            <div class="loader-cart">
+                <div class="loader-wheel"></div>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-summary">
+            </div>
         </div>
 
-        <div class="item-images">
+        <h1 id="title">Title Placeholder</h1>
+        <div class="bottom">
+            <div class="item-images">
 
-        </div>
-        <div class="information">
-        <div class="item-description">
+            </div>
 
-        
-        </div>
-      <button id="btn-detail">afficher plus</button> 
-      <div class="selectors">
+            <div class="information">
+                <div class="selectors-container">
 
-      </div>
-        <div id="price-detail">
-            <button class="add">ajouter au panier</button>
+                </div>
+                <div class="item-description">
+                </div>
+                <button id="btn-detail">afficher plus</button>
+                <div id="price-detail">
+                    <button class="add">ajouter au panier</button>
+                </div>
+            </div>
         </div>
-        </div>
-    </content>
+    </div>
 
     <footer>
         <p>© 2023 - Projet Boutique en ligne</p>
         <p>Créé par <a href="https://github.com/valentinlamine">Valentin LAMINE</a> et <a href="https://github.com/PhilippeMath49">Philippe MATHIEU</a></p>
     </footer>
-    
     <script src="script/detail.js"></script>
     <script src="script/cart.js"></script>
-    <script src="script/main.js"></script>
 </body>
 </html>
