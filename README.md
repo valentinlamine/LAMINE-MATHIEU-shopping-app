@@ -33,7 +33,7 @@ Contient tous les dossiers et pages html pour le frontend du site.
 
   * [cart.css](frontend/css/cart.css) pour le design du panier.
   * [detail.css](frontend/css/detail.css) pour le design de la page détail.
-  * [font.css](frontend/css/font.css) pour le design de la police d'écriture.
+  * [fonts.css](frontend/css/fonts.css) pour le design de la police d'écriture.
   * [load.css](frontend/css/load.css) pour le design pendant le chargement de la page.
   * [style.css](frontend/css/style.css) pour le design de la page index.
 * Dans le dossier [fonts,](frontend/fonts) on retrouve les différentes polices d'écriture utilisées pour le site.
