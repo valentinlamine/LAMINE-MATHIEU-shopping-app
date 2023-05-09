@@ -165,6 +165,7 @@ function UpdateColor(selector, color) {
         img.src = img_splited.join("/");
     });
     selector.querySelector(".right .third-group button:nth-child(2)").setAttribute("onclick", `GetItemStorage(this, ${id}, '${color}')`);
+    selector.querySelector(".right .third-group button:nth-child(1)").setAttribute("onclick", `details(${id}, '${color}')`);
 }
 
 function GetSelectedValue() {
@@ -312,7 +313,7 @@ function PreviousImage(img_ctn) {
 }
 
 function details(id,color){
-    const detail= { id, color};
+    const detail= {id, color};
     localStorage.setItem("details", JSON.stringify(detail));
     window.location.href= "detail.html";
 }

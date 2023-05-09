@@ -7,16 +7,19 @@ let Storage;
 let item;
 let isDisplay = false;
 
-const itemTitle = document.querySelector(".content #title");
 const itemImages = document.querySelector(".item-images");
 const itemText = document.querySelector(".item-description");
 const text = document.querySelector(".item-description");
-const btnAfficher = document.querySelector("#btn-detail");
 const selector_container = document.querySelector(".selectors-container");
 
 
 
 StartingFunc();
+
+function UpdateInformationSize() {
+    let size = document.querySelector(".content .bottom");
+    document.querySelector(".content .bottom .information").style.height = size.offsetHeight + "px";
+}
 
 function StartingFunc() {
     Storage = localStorage.getItem("details");
@@ -32,7 +35,6 @@ function GetItemDetailsFromAPI() {
         .then((response) => response.json())
         .then((data) => {
             item = data.item;
-            console.log(item);
             DisplayItemDetails();
         })
         .catch((error) => {
@@ -41,11 +43,21 @@ function GetItemDetailsFromAPI() {
 }
 
 function DisplayItemDetails() {
-    console.log(itemTitle.innerHTML, item.name);
-    itemTitle.innerHTML = item.name;
-    DisplayText();
     DisplayImages();
-    displaySelector();
+    document.querySelector(".content #title").innerHTML = item.name;
+    document.querySelector(".content #smaller-title").innerHTML = item.name;
+    if (item.reduction > 0) {
+        document.querySelector(".content #price").innerHTML = "<span class='old-price'>" + item.price[0] + item.currency + "</span><span class='new-price'>" + Math.trunc(item.price[0] - (item.price[0] * item.reduction / 100)) + item.currency + "</span>";
+    } else {
+        document.querySelector(".content #price").innerHTML = item.price[0] + item.currency;
+    }
+    document.querySelector(".content #colors").innerHTML = "<b>Colors</b><p>" + item.colors.join(", ") + "</p>";
+    document.querySelector(".content #storage").innerHTML = "<b>Storages</b><p>" + item.storage.join(", ") + "</p>";
+    document.querySelector(".content #release").innerHTML = "<b>Release</b><p>" + item.release_date + "</p>";
+    document.querySelector(".content #size").innerHTML = "<b>Size</b><p>" + item.size + "</p>";
+    document.querySelector(".content .add").setAttribute("onclick", `addItemToCart(${item.id}, "${Storage.color}", "${item.storage[0]}")`);
+    DisplaySelector();
+    DisplayDescription();
 }
 
 function DisplayImages() {
@@ -79,38 +91,40 @@ function changeMainImage(src) {
 
 function IsChecked() {
     let src = document.querySelector(".image-list input:checked").value;
-    console.log(src);
     src = src.split("/");
     src[1] = "high";
     src = src.join("/");
     changeMainImage(src);
 }
-function DisplayText() {
+function DisplayDescription() {
     itemText.innerHTML = item.description.substring(0,150)+`... <a id="btn-detail" href="#">afficher plus</a>`;
+    document.addEventListener("click", function (e) {
+        if (e.target && e.target.id === "btn-detail") {
+            displayMore();
+        }
+    });
 }
 
+function FullyLoaded() {
+    UpdateInformationSize();
+}
 
 function displayMore() {
     let longText = item.description;
     let shortText = longText.substring(0,150)+"...";
-
     if(!isDisplay){
-        btnAfficher.innerHTML="";
-        btnAfficher.innerHTML=`afficher moins`;
         text.innerHTML="";
-        text.innerHTML=longText;
+        text.innerHTML=longText + `<a id="btn-detail" href="#">afficher moins</a>`;
         isDisplay = true; 
     }else{
         text.innerHTML="";
-        text.innerHTML=shortText;
-        btnAfficher.innerHTML="";
-        btnAfficher.innerHTML=`afficher plus`;
+        text.innerHTML=shortText + `<a id="btn-detail" href="#">afficher plus</a>`;
         isDisplay = false;
     }
  
 }
 
-function displaySelector(){
+function DisplaySelector(){
     selector_container.innerHTML="";
     let selector = "";
     if (item.colors.length > 1) {
@@ -119,11 +133,11 @@ function displaySelector(){
           if (item.colors[i] === Storage.color) {
             selector += `
             <input type="radio" id="color${i}" value="${item.colors[i]}" name="color" checked>
-            <label class="color-label" for="color${i}"><div class="color" style="background-color: ${item.colors[i]}"></div></label>\n`;
+            <label class="color-picker ${item.colors[i]}" for="color${i}"><span class="check"></span></label>\n`;
           } else {
             selector += `
             <input type="radio" id="color${i}" value="${item.colors[i]}" name="color">
-            <label class="color-label" for="color${i}"><div class="color" style="background-color: ${item.colors[i]}"></div></label>\n`;
+            <label class="color-picker ${item.colors[i]}" for="color${i}"><span class="check"></span></label>\n`;
           }
         }
         selector += `</div>`;
@@ -132,14 +146,14 @@ function displaySelector(){
     if (item.storage.length > 1) {
         selector = `<div class="storage-selector">`;
         for (let i = 0; i < item.storage.length; i++) {
-          if (item.storage[i] === Storage.storage) {
+          if (i === 0) {
             selector += `
             <input type="radio" id="storage${i}" value="${item.storage[i]}" name="storage"  checked>
-            <label class="storage-label" for="storage${i}">${item.storage[i]}</label>\n`;
+            <label class="storage-label" for="storage${i}">${item.storage[i]}<span class="check"></span></label>\n`;
           } else {
             selector += `
             <input type="radio" id="storage${i}" value="${item.storage[i]}" name="storage">
-            <label class="storage-label" for="storage${i}">${item.storage[i]}</label>\n`;
+            <label class="storage-label" for="storage${i}">${item.storage[i]}<span class="check"></span></label>\n`;
           }
         }
         selector += `</div>`;
@@ -157,6 +171,56 @@ document.addEventListener("change", function (e) {
   DocumentEventChange(e);
 });
 
+window.addEventListener("resize", function () {
+  UpdateInformationSize();
+});
+
+
+/* quand la page est chargée */
+window.addEventListener("load", function () {
+    FullyLoaded();
+});
 function DocumentEventChange(e) {
-  IsChecked();
+    if (e.target.name === "image") {
+        IsChecked();
+    } if (e.target.name === "color" || e.target.name === "storage") {
+        UpdatePageColorStorage();
+    }
+}
+
+function UpdatePageColorStorage() {
+    let color = document.querySelector(".content .selectors-container .color-selector input:checked").value;
+    Storage.color = color;
+    let storage = document.querySelector(".content .selectors-container .storage-selector input:checked").value;
+    document.querySelector(".content .add").setAttribute("onclick", `addItemToCart(${item.id}, "${color}", "${storage}")`);
+    let actualImg = document.querySelector(".main-image img").src.split("/");
+    actualImg[actualImg.length - 1] = color + ".jpg";
+    actualImg.splice(0, 3);
+    document.querySelector(".main-image img").src = actualImg.join("/");
+    let listImg = document.querySelectorAll(".image-list img");
+    for (let i = 0; i < listImg.length; i++) {
+        let src = listImg[i].src.split("/");
+        src.splice(0, 3);
+        src[src.length - 1] = color + ".jpg";
+        listImg[i].src = src.join("/");
+        listImg[i].parentElement.previousElementSibling.value = src.join("/");
+    }
+    if (item.reduction > 0) {
+        document.querySelector(".content #price").innerHTML = "<span class='old-price'>" + item.price[0] + item.currency + "</span><span class='new-price'>" + GetPrice(storage) + item.currency + "</span>";
+    } else {
+        document.querySelector(".content #price").innerHTML = GetPrice(storage) + item.currency;
+    }
+}
+
+function GetPrice(capacity) {
+    for (let i = 0; i < item.storage.length; i++) {
+        if (item.storage[i] === capacity) {
+            if (item.reduction === 0) {
+                return item.price[i];
+            } else {
+                //arrondi au centieme
+                return Math.round(item.price[i] * (1 - item.reduction / 100) * 100) / 100;
+            }
+        }
+    }
 }

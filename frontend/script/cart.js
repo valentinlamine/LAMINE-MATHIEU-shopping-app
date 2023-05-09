@@ -7,8 +7,25 @@ let itemCartList = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // Event Listeners
+let itemsCart = [];
 cartIcon.addEventListener("click", OpenCart);
 cartBlur.addEventListener("click", OpenCart);
+
+getItems();
+function getItems() {
+    fetch(url + "/items")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            itemsCart = data.items;
+            GetSelectedValue();
+        }
+        )
+        .catch(error => {
+            console.log(error);
+        });
+}
 
 
 EnableLoadingCart();
@@ -62,27 +79,22 @@ function OpenCart() {
 
 function addItemToCart(id, color, capacity) {
     id = id.toString() // Convert id to string
-    
-    if (itemCartList.some(item => item.item.id === id && item.color === color && item.capacity === capacity)) { // If item is already in cart, increment quantity
-        itemCartList.forEach(item => { // If item is already in cart, increment quantity
+    console.log(id, color, capacity);
+    console.log(itemCartList)
+
+    //if item is already in cart
+    if (itemCartList.some(item => item.item.id === id && item.color === color && item.capacity === capacity)) {
+        itemCartList.forEach(item => {
             if (item.item.id === id && item.color === color && item.capacity === capacity) {
                 item.quantity++;
             }
         });
-        localStorage.setItem("cart", JSON.stringify(itemCartList)); // Update local storage
-        DisplayCartItems(); // Update cart
-        return; // Stop function
+    } else {
+        itemCartList.push({ item: itemsCart.find(item => item.id === id), color: color, capacity: capacity, quantity: 1 });
     }
-     
-    let CartItem = {
-        item: items.find(item => item.id === id),
-        color: color,
-        capacity: capacity,
-        quantity: 1
-    };
-    itemCartList.push(CartItem);
     localStorage.setItem("cart", JSON.stringify(itemCartList));
     DisplayCartItems();
+
 }
 
 function addOneItemToCart(id, color, capacity) {
