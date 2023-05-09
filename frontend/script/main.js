@@ -112,10 +112,10 @@ function DisplayItemsCards(colors) {
                 <div class="first-group">`;
             if (item.reduction > 0) {
                 HTMLContent += `<div class="item-name"><span class="title">${item.name}</span><span class="reduction">-${item.reduction}%</span></div>
-                    <div class="item-price">À Partir de <span class="old price">${Math.trunc(item.price[0])} €</span><span class="new price">${Math.trunc(item.price[0] - (item.price[0] * item.reduction / 100))} €</span></div>`;
+                    <div class="item-price">À Partir de <span class="old price">${Math.trunc(item.price[0])} ${item.currency}</span><span class="new price">${Math.trunc(item.price[0] - (item.price[0] * item.reduction / 100))} ${item.currency}</span></div>`;
             } else {
                 HTMLContent += `<div class="item-name"><span class="title">${item.name}</span></div>
-                    <div class="item-price">À Partir de <span class="price">${Math.trunc(item.price[0])} €</span></div>`;
+                    <div class="item-price">À Partir de <span class="price">${Math.trunc(item.price[0])} ${item.currency}</span></div>`;
             }
             HTMLContent += `
                 </div>

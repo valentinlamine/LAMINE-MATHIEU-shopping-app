@@ -12,6 +12,9 @@ const itemText = document.querySelector(".item-description");
 const text = document.querySelector(".item-description");
 const selector_container = document.querySelector(".selectors-container");
 
+//Loading page
+document.querySelector(".bottom").style.display = "none";
+document.querySelector(".loader").style.display = "flex";
 
 
 StartingFunc();
@@ -106,7 +109,13 @@ function DisplayDescription() {
 }
 
 function FullyLoaded() {
+    DisableLoadPage();
     UpdateInformationSize();
+}
+
+function DisableLoadPage() {
+    document.querySelector(".bottom").style.display = "flex";
+    document.querySelector(".loader").style.display = "none";
 }
 
 function displayMore() {
@@ -161,33 +170,6 @@ function DisplaySelector(){
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#btn-detail").addEventListener("click", function () {
-    displayMore();
-  });
-});
-
-document.addEventListener("change", function (e) {
-  DocumentEventChange(e);
-});
-
-window.addEventListener("resize", function () {
-  UpdateInformationSize();
-});
-
-
-/* quand la page est chargée */
-window.addEventListener("load", function () {
-    FullyLoaded();
-});
-function DocumentEventChange(e) {
-    if (e.target.name === "image") {
-        IsChecked();
-    } if (e.target.name === "color" || e.target.name === "storage") {
-        UpdatePageColorStorage();
-    }
-}
-
 function UpdatePageColorStorage() {
     let color = document.querySelector(".content .selectors-container .color-selector input:checked").value;
     Storage.color = color;
@@ -224,3 +206,32 @@ function GetPrice(capacity) {
         }
     }
 }
+
+function DocumentEventChange(e) {
+    if (e.target.name === "image") {
+        IsChecked();
+    } if (e.target.name === "color" || e.target.name === "storage") {
+        UpdatePageColorStorage();
+    }
+    UpdateInformationSize();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#btn-detail").addEventListener("click", function () {
+    displayMore();
+  });
+});
+
+document.addEventListener("change", function (e) {
+  DocumentEventChange(e);
+});
+
+window.addEventListener("resize", function () {
+  UpdateInformationSize();
+});
+
+window.addEventListener("load", function () {
+    FullyLoaded();
+});
+
+
