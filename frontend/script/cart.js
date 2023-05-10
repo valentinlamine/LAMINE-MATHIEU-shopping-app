@@ -148,7 +148,7 @@ function DisplayCartItems() {
             <div class="color ${CartItem.color}"></div>
             <div class="name">${CartItem.item.name}</div></div> 
             <div class="capacity">${CartItem.capacity}</div> 
-            <div class="price">${Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100} ${item.currency}</div>
+            <div class="price">${Math.round((FindPrice(CartItem.item, CartItem.capacity) * CartItem.quantity) * 100) / 100} ${CartItem.item.currency}</div>
             </div><div class="right">
             <button class="quantity-button" onclick="removeOneItemFromCart(${CartItem.item.id}, '${CartItem.color}', '${CartItem.capacity}')">-</button>
             <div class="quantity">${CartItem.quantity}</div>
@@ -159,7 +159,7 @@ function DisplayCartItems() {
         cartItems.appendChild(cartItem);
     });
     if (total > 0) {
-        cartSummary.innerHTML = `<div class="total-price">Total : ${Math.round(total * 100) / 100} ${item.currency}</div>`;
+        cartSummary.innerHTML = `<div class="total-price">Total : ${Math.round(total * 100) / 100} €</div>`;
         cartSummary.innerHTML += `<button class="btn" onclick="ClearCart();">Clear Cart</button>`;
     } else {
         cartSummary.innerHTML = `<div class="total-price">Your cart is empty</div>`;

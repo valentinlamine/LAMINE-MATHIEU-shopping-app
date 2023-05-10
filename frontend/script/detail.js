@@ -216,12 +216,6 @@ function DocumentEventChange(e) {
     UpdateInformationSize();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#btn-detail").addEventListener("click", function () {
-    displayMore();
-  });
-});
-
 document.addEventListener("change", function (e) {
   DocumentEventChange(e);
 });
@@ -232,6 +226,9 @@ window.addEventListener("resize", function () {
 
 window.addEventListener("load", function () {
     FullyLoaded();
+    document.querySelector("#btn-detail").addEventListener("click", function () {
+        displayMore();
+    });
 });
 
 
